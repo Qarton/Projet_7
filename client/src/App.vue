@@ -1,12 +1,23 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <!--router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link-->
-    </div>
+<v-app id="inspire">
+  <page-header />
+  <main>
+    <v-container fluid>
     <router-view/>
-  </div>
+    </v-container>
+  </main>
+</v-app>
 </template>
+
+<script>
+import PageHeader from './components/Header.vue'
+export default {
+  name: 'app',
+  components: {
+    PageHeader
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
