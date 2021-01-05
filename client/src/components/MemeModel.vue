@@ -5,7 +5,7 @@
         {{title}}
         </v-toolbar-title>
       </v-toolbar>
-        <v-img  class="mx-2 my-2" :src='imageUrl' alt="MEME" />
+      <slot> Slot vide </slot>
       <v-card-actions>
       <v-spacer></v-spacer>
         <v-btn icon>
@@ -24,7 +24,7 @@
 <script>
 import MemeService from '@/services/MemeService'
 export default {
-  props: ['title', 'imageUrl'],
+  props: ['title'],
   data () {
     return {
       likeTest: {

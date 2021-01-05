@@ -1,7 +1,9 @@
 <template>
   <v-row justify="center">
     <v-col md="4" sm="8">
-      <meme-model :title="meme.title" :imageUrl="meme.imageUrl" />
+      <meme-model :title="meme.title">
+        <v-img  class="mx-2 my-2" :src='meme.imageUrl' alt="MEME" />
+      </meme-model>
     </v-col>
   </v-row>
 </template>
