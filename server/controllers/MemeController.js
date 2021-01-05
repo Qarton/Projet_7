@@ -1,4 +1,3 @@
-//const { like } = require('sequelize/types/lib/operators')
 const { Meme } = require('../models')
 
 
@@ -36,19 +35,17 @@ module.exports = {
       })
     }
   },
-  async like(req, res) {
+  async comment (req, res) {
     try {
-      const like = await req.body.like
-      if (like === 1) {
-        console.log('liked')
-        res.send('liked')
-      } else {
-        console.log('chepa')
-        res.send('chepa')
-      }
+      await Meme.update(req.body, {
+        where: {
+          id: req.params.memeId
+        }
+      })
+      res.send(req.body)
     } catch (err) {
-      res.status(400).send({
-        error: 'Error fetch meme'
+      res.status(500).send({
+        error: 'an error has occured trying to update the song'
       })
     }
   }

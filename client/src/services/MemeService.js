@@ -10,7 +10,7 @@ export default {
   show (memeId) {
     return Api().get(`meme/${memeId}`)
   },
-  like (value) {
-    return Api().get('meme/like', value)
+  comment (meme) {
+    return Api().put(`meme/${meme.id}`, meme)
   }
 }

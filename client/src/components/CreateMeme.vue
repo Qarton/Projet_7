@@ -21,7 +21,8 @@ export default {
     return {
       meme: {
         title: null,
-        imageUrl: null
+        imageUrl: null,
+        comments: null
       },
       error: null,
       required: (value) => !!value || 'Required'
@@ -30,11 +31,11 @@ export default {
   methods: {
     async create () {
       this.error = null
-      const testFields = await Object.keys(this.meme).every(key => !!this.meme[key])
-      if (!testFields) {
-        this.error = 'Please fill all the required fields.'
-        return
-      }
+      // const testFields = await Object.keys(this.meme).every(key => !!this.meme[key])
+      // if (!testFields) {
+      //   this.error = 'Please fill all the required fields.'
+      //   return
+      // }
       try {
         await MemeService.post(this.meme)
         this.$router.push({

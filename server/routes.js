@@ -15,8 +15,7 @@ module.exports = (app) => {
     app.get('/meme/:memeId',
     MemeController.show)
     app.post('/meme',
-    MemeController.post),
-    app.post('/meme/like',
-    MemeController.like)
-    
+    MemeController.post)
+    app.put('/meme/:memeId',
+    MemeController.comment)
 }
