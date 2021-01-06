@@ -21,8 +21,7 @@ export default {
     return {
       meme: {
         title: null,
-        imageUrl: null,
-        comments: null
+        imageUrl: null
       },
       error: null,
       required: (value) => !!value || 'Required'

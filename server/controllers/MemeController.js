@@ -34,19 +34,5 @@ module.exports = {
         error: 'Error creating Meme'
       })
     }
-  },
-  async comment (req, res) {
-    try {
-      await Meme.update(req.body, {
-        where: {
-          id: req.params.memeId
-        }
-      })
-      res.send(req.body)
-    } catch (err) {
-      res.status(500).send({
-        error: 'an error has occured trying to update the song'
-      })
-    }
   }
 }

@@ -9,8 +9,5 @@ export default {
   },
   show (memeId) {
     return Api().get(`meme/${memeId}`)
-  },
-  comment (meme) {
-    return Api().put(`meme/${meme.id}`, meme)
   }
 }
