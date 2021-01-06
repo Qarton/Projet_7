@@ -56,7 +56,7 @@ export default {
     async deleteComment () {
       try {
         await CommentService.delete(this.comment.id)
-        this.bookmark = null
+        this.comment = null
       } catch (err) {
         console.log(err)
       }

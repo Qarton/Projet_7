@@ -32,12 +32,10 @@ module.exports = {
           error : 'already commented'
         })
       }
-      const testNew = {
+      const newComment = await Comment.create({
         MemeId: memeId,
         UserId: userId
-      }
-      console.log(testNew)
-      const newComment = await Comment.create(testNew)
+      })
       res.send(newComment)
     } catch (err) {
       res.status(400).send({
