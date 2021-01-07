@@ -17,7 +17,6 @@ module.exports = {
   async show(req, res) {
     try {
       const meme = await Meme.findByPk(req.params.memeId)
-      console.log(req.params.memeId)
       res.send(meme)
     } catch (err) {
       res.status(400).send({

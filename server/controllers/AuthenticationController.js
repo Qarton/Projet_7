@@ -37,7 +37,6 @@ module.exports = {
             })
         }
     },
-
     async login (req, res) {
         try {
             const {email, password} = req.body
@@ -71,5 +70,21 @@ module.exports = {
         }
         
         
+    },
+    async index(req, res) {
+      try {
+        console.log(req.query)
+        const userId = req.query.userId
+        const userEmail = await User.findOne({
+          where: {
+            id: userId
+          }
+        })
+        res.send(userEmail.email)
+      } catch (err) {
+        res.status(400).send({
+          error: 'Error fetch name'
+        })
+      }
     }
 }

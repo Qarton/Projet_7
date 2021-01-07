@@ -1,5 +1,11 @@
 <template>
-  <div>
+  <div class="pt-4">
+    <v-card v-if="isUserLoggedIn && comment" outlined>
+      <v-card-title>Message</v-card-title>
+      <v-card-subtitle>User : {{comment.UserId}}</v-card-subtitle>
+      <v-card-text>{{comment.text}}</v-card-text>
+    </v-card>
+    <v-textarea v-if="isUserLoggedIn && !comment" outlined label="Votre message" v-model="text"></v-textarea>
     <v-btn v-if="isUserLoggedIn && !comment" @click="addComment" class="cyan" dark>Comment</v-btn>
     <v-btn v-if="isUserLoggedIn && comment" @click="deleteComment" class="cyan" dark>Delete</v-btn>
   </div>
@@ -17,7 +23,8 @@ export default {
   },
   data () {
     return {
-      comment: null
+      comment: null,
+      text: ''
     }
   },
   async mounted () {
@@ -37,7 +44,8 @@ export default {
       try {
         this.comment = (await CommentService.post({
           memeId: this.meme.id,
-          userId: this.$store.state.user.id
+          userId: this.$store.state.user.id,
+          text: this.text
         })).data
       } catch (err) {
         console.log(err)

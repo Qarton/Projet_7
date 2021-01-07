@@ -3,7 +3,7 @@
     <v-col md="4" sm="8">
       <meme-model :title="meme.title">
         <v-img  class="mx-2 my-2" :src='meme.imageUrl' alt="MEME" />
-        {{meme.UserId}}
+        Créateur : {{userEmail}}
       </meme-model>
       <meme-comment />
     </v-col>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import AuthenticationService from '@/services/AuthenticationService'
 import MemeService from '@/services/MemeService'
 import MemeModel from '@/components/MemeModel'
 import MemeComment from '@/components/MemeComment'
@@ -27,13 +28,18 @@ export default {
   },
   data () {
     return {
-      meme: {}
+      meme: {},
+      userId: null,
+      userEmail: null
     }
   },
   async mounted () {
     const memeId = await this.$store.state.route.params.memeId
     this.meme = (await MemeService.show(memeId)).data
-    console.log(this.meme)
+    this.userId = await this.meme.UserId
+    console.log(this.meme.UserId, 'test ID')
+    this.userEmail = (await AuthenticationService.index({ userId: this.userId })).data
+    console.log(this.userEmail)
   }
 }
 </script>

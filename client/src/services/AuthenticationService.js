@@ -6,5 +6,10 @@ export default {
   },
   login (credentials) {
     return Api().post('login', credentials)
+  },
+  index (userId) {
+    return Api().get('user', {
+      params: userId
+    })
   }
 }

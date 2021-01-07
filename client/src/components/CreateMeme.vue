@@ -40,7 +40,6 @@ export default {
       //   return
       // }
       try {
-        console.log(this.meme)
         await MemeService.post(this.meme)
         this.$router.push({
           name: 'meme'

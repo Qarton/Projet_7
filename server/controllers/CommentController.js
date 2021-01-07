@@ -20,7 +20,7 @@ module.exports = {
   },
   async post(req, res) {
     try {
-      const {memeId, userId} = req.body
+      const {memeId, userId, text} = req.body
       const comment = await Comment.findOne({
         where: {
           MemeId: memeId,
@@ -34,7 +34,8 @@ module.exports = {
       }
       const newComment = await Comment.create({
         MemeId: memeId,
-        UserId: userId
+        UserId: userId,
+        text: text
       })
       res.send(newComment)
     } catch (err) {

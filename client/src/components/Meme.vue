@@ -4,6 +4,7 @@
           <div v-for="meme in memes" :key="meme.id" class="py-4 px-2">
             <meme-model :title="meme.title">
               <v-img  class="mx-2 my-2" :src='meme.imageUrl' alt="MEME" @click="navigateTo({name: 'meme-detail', params: {memeId: meme.id}})" />
+              <pseudo :Utilisateur="meme.UserId" />
             </meme-model>
           </div>
         </v-col>
@@ -13,9 +14,11 @@
 <script>
 import MemeService from '@/services/MemeService'
 import MemeModel from '@/components/MemeModel'
+import Pseudo from '@/components/Pseudo'
 export default {
   components: {
-    MemeModel
+    MemeModel,
+    Pseudo
   },
   data () {
     return {

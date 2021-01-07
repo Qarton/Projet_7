@@ -11,6 +11,9 @@ module.exports = (app) => {
     app.post('/login',
     AuthenticationController.login)
 
+    app.get('/user',
+    AuthenticationController.index)
+
     app.get('/meme',
     MemeController.index)
     app.get('/meme/:memeId',
