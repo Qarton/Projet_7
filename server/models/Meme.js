@@ -4,6 +4,9 @@ module.exports = (sequelize, Datatypes) => {
         title : Datatypes.STRING,
         imageUrl : Datatypes.STRING
     })
+    Meme.associate = function (models) {
+      Meme.belongsTo(models.User)
+    }
 
     return Meme
     }

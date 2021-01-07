@@ -11,26 +11,13 @@
         <v-btn icon>
           <v-icon>mdi-message-reply-text</v-icon>
         </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-heart-broken</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
       </v-card-actions>
       </v-card>
 </template>
 
 <script>
 export default {
-  props: ['title'],
-  data () {
-    return {
-      likeTest: {
-        like: 0
-      }
-    }
-  }
+  props: ['title']
 }
 </script>
 

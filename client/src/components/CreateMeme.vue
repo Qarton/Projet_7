@@ -21,11 +21,15 @@ export default {
     return {
       meme: {
         title: null,
-        imageUrl: null
+        imageUrl: null,
+        UserId: null
       },
       error: null,
       required: (value) => !!value || 'Required'
     }
+  },
+  async mounted () {
+    this.meme.UserId = await this.$store.state.user.id
   },
   methods: {
     async create () {
@@ -36,6 +40,7 @@ export default {
       //   return
       // }
       try {
+        console.log(this.meme)
         await MemeService.post(this.meme)
         this.$router.push({
           name: 'meme'
