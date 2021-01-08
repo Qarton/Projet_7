@@ -4,11 +4,9 @@ module.exports = {
   async index(req, res) {
     try {
       const memeId = req.query.memeId
-      const userId = req.query.userId
-      const comment = await Comment.findOne({
+      const comment = await Comment.findAll({
         where: {
-          MemeId: memeId,
-          UserId: userId
+          MemeId: memeId
         }
       })
       res.send(comment)
