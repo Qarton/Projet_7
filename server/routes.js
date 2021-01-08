@@ -19,7 +19,10 @@ module.exports = (app) => {
     app.get('/meme/:memeId',
     MemeController.show)
     app.post('/meme',
-    MemeController.post)
+    MemeController.post),
+    app.get('/user-activity',
+    MemeController.search)
+
 
     app.get('/comments',
     CommentController.index)
@@ -27,4 +30,6 @@ module.exports = (app) => {
     CommentController.post)
     app.delete('/comments/:commentId',
     CommentController.delete)
+    app.get('/user-activity-comment',
+    CommentController.search)
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import UserActivity from '../components/UserActivity.vue'
 import Register from '../components/Register.vue'
 import Login from '../components/Login.vue'
 import Meme from '../components/Meme.vue'
@@ -12,9 +12,9 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/user-activity',
+    name: 'user-activity',
+    component: UserActivity
   },
   {
     path: '/register',

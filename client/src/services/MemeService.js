@@ -9,5 +9,12 @@ export default {
   },
   show (memeId) {
     return Api().get(`meme/${memeId}`)
+  },
+  search (userId) {
+    return Api().get('user-activity', {
+      params: {
+        userId: userId
+      }
+    })
   }
 }

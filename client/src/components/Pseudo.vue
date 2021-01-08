@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="navigateTo({name: 'user-activity', params: {userId: userId}})">
     Utilisateur : {{userEmail}}
   </div>
 </template>
@@ -17,6 +17,11 @@ export default {
   async mounted () {
     this.userId = this.Utilisateur
     this.userEmail = (await AuthenticationService.index({ userId: this.userId })).data
+  },
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
+    }
   }
 }
 </script>

@@ -11,5 +11,12 @@ export default {
   },
   delete (commentId) {
     return Api().delete(`comments/${commentId}`)
+  },
+  search (userId) {
+    return Api().get('user-activity-comment', {
+      params: {
+        userId: userId
+      }
+    })
   }
 }
