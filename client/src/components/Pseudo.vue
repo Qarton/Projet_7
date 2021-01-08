@@ -14,8 +14,8 @@ export default {
     }
   },
   props: ['Utilisateur'],
-  async mounted () {
-    this.userId = this.Utilisateur
+  async created () {
+    this.userId = await this.Utilisateur
     this.userEmail = (await AuthenticationService.index({ userId: this.userId })).data
   },
   methods: {

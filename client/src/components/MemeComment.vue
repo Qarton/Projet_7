@@ -34,11 +34,6 @@ export default {
       userId: null
     }
   },
-  watch: {
-    comments: function () {
-      console.log('watch test')
-    }
-  },
   async mounted () {
     const memeId = await this.$store.state.route.params.memeId
     this.meme = (await MemeService.show(memeId)).data
