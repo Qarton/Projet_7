@@ -25,11 +25,11 @@ module.exports = {
           UserId: userId
         }
       })
-      if (comment) {
-        return res.status(400).send({
-          error : 'already commented'
-        })
-      }
+      // if (comment) {
+      //   return res.status(400).send({
+      //     error : 'already commented'
+      //   })
+      // }
       const newComment = await Comment.create({
         MemeId: memeId,
         UserId: userId,

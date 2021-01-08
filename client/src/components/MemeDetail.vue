@@ -37,9 +37,7 @@ export default {
     const memeId = await this.$store.state.route.params.memeId
     this.meme = (await MemeService.show(memeId)).data
     this.userId = await this.meme.UserId
-    console.log(this.meme.UserId, 'test ID')
     this.userEmail = (await AuthenticationService.index({ userId: this.userId })).data
-    console.log(this.userEmail)
   }
 }
 </script>
