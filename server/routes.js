@@ -2,15 +2,14 @@ const AuthenticationController = require('./controllers/AuthenticationController
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 const MemeController = require('./controllers/MemeController')
 const CommentController = require('./controllers/CommentController')
+const ActivityController = require('./controllers/ActivityController')
 
 module.exports = (app) => {
     app.post('/register',
     AuthenticationControllerPolicy.register,
     AuthenticationController.register)
-
     app.post('/login',
     AuthenticationController.login)
-
     app.get('/user',
     AuthenticationController.index)
 
@@ -19,9 +18,7 @@ module.exports = (app) => {
     app.get('/meme/:memeId',
     MemeController.show)
     app.post('/meme',
-    MemeController.post),
-    app.get('/user-activity',
-    MemeController.search)
+    MemeController.post)
 
 
     app.get('/comments',
@@ -30,6 +27,7 @@ module.exports = (app) => {
     CommentController.post)
     app.delete('/comments/:commentId',
     CommentController.delete)
-    app.get('/user-activity-comment',
-    CommentController.search)
+
+    app.get('/activity',
+    ActivityController.search)
 }

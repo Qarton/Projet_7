@@ -12,8 +12,8 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/user-activity',
-    name: 'user-activity',
+    path: '/activity',
+    name: 'activity',
     component: UserActivity
   },
   {

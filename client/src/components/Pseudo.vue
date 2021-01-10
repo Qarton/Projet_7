@@ -1,5 +1,5 @@
 <template>
-  <div @click="navigateTo({name: 'user-activity', params: {userId: userId}})">
+  <div @click="navigateTo({name: 'activity', params: {userId: userId}})">
     Utilisateur : {{userEmail}}
   </div>
 </template>

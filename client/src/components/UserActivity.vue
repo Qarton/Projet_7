@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import CommentService from '@/services/CommentService'
+import ActivityService from '@/services/ActivityService'
 import MemeModel from '@/components/MemeModel'
 import Pseudo from '@/components/Pseudo'
 export default {
@@ -35,8 +35,8 @@ export default {
   },
   async mounted () {
     const userId = await this.$store.state.route.params.userId
-    this.memes = ((await CommentService.search(userId)).data).memes
-    this.comments = ((await CommentService.search(userId)).data).comments
+    this.memes = ((await ActivityService.search(userId)).data).memes
+    this.comments = ((await ActivityService.search(userId)).data).comments
   },
   methods: {
     navigateTo (route) {
