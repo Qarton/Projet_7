@@ -1,24 +1,32 @@
 <template>
+<div>
   <v-row justify="center">
-    <v-col md="4" sm="8">
-      <meme-model :title="meme.title">
-        <v-img  class="mx-2 my-2" :src='meme.imageUrl' alt="MEME" />
-      </meme-model>
+    <v-col md="6" sm="10">
+      <h1 class="text-center"> {{meme.title}} </h1>
+        <v-img class="mx-2 my-2" :src='meme.imageUrl' alt="MEME" />
+        </v-col>
+  </v-row>
+  <v-row justify="center" class="align-center">
+    <v-col md="8" class="d-flex align-center ml-4">
+      <strong>Créateur :</strong>
       <pseudo :Utilisateur="testUserId" />
+    </v-col>
+  </v-row>
+  <v-row justify="center">
+    <v-col md="6" sm="10">
       <meme-comment />
     </v-col>
   </v-row>
+</div>
 </template>
 
 <script>
 import MemeService from '@/services/MemeService'
-import MemeModel from '@/components/MemeModel'
 import MemeComment from '@/components/MemeComment'
 import Pseudo from '@/components/Pseudo'
 import { mapState } from 'vuex'
 export default {
   components: {
-    MemeModel,
     MemeComment,
     Pseudo
   },

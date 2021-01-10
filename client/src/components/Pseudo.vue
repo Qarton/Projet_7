@@ -1,6 +1,11 @@
 <template>
-  <div @click="navigateTo({name: 'activity', params: {userId: userId}})">
-    Utilisateur : {{userEmail}}
+<div @click="navigateTo({name: 'activity', params: {userId: userId}})">
+<v-card class="d-flex align-center" flat>
+    <v-avatar rounded color="cyan" size="36">
+      <span class="white--text headline">{{userId}}</span>
+    </v-avatar>
+    <strong class="ml-1">{{userEmail}}</strong>
+</v-card>
   </div>
 </template>
 

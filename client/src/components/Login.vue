@@ -2,10 +2,18 @@
       <v-row justify="center">
         <v-col md="4" sm="8">
           <panel title="Login">
-            <v-text-field v-model="email" label="Email"></v-text-field>
-            <v-text-field v-model="password" type="password" label="Password"></v-text-field>
-            <div class="error" v-html="error" />
-            <div class="success" v-html="success" />
+            <v-text-field
+            v-model="email"
+            label="Email"
+            @keyup.enter="$event.target.nextElementSibling.focus()"
+            ></v-text-field>
+            <v-text-field
+            v-model="password"
+            type="password"
+            label="Password"
+            @keyup.enter="login"
+            ></v-text-field>
+            <v-alert dense type="error" v-if="error" v-html="error" />
             <v-btn @click="login" class="cyan" dark>Login</v-btn>
           </panel>
         </v-col>
@@ -20,8 +28,7 @@ export default {
     return {
       email: '',
       password: '',
-      error: null,
-      success: null
+      error: null
     }
   },
   components: {
@@ -36,6 +43,9 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'meme'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }
@@ -46,9 +56,6 @@ export default {
 
 <style scoped>
 .error {
-  color: white;
-}
-.success {
   color: white;
 }
 </style>

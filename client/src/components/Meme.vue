@@ -4,8 +4,8 @@
           <div v-for="meme in memes" :key="meme.id" class="py-4 px-2">
             <meme-model :title="meme.title">
               <v-img  class="mx-2 my-2" :src='meme.imageUrl' alt="MEME" @click="navigateTo({name: 'meme-detail', params: {memeId: meme.id}})" />
-              <pseudo :Utilisateur="meme.UserId" />
             </meme-model>
+              <pseudo :Utilisateur="meme.UserId" />
           </div>
         </v-col>
       </v-row>

@@ -1,5 +1,5 @@
 <template>
-      <v-card>
+      <v-card class="mb-4" flat outlined>
       <v-toolbar fixed class="cyan" dark>
         <v-toolbar-title class="mr-4 flex text-center">
         {{title}}
