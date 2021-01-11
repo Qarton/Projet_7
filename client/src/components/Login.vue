@@ -14,7 +14,7 @@
             @keyup.enter="login"
             ></v-text-field>
             <v-alert dense type="error" v-if="error" v-html="error" />
-            <v-btn @click="login" class="cyan" dark>Login</v-btn>
+            <v-btn @click="login" class="black" dark>Login</v-btn>
           </panel>
         </v-col>
       </v-row>

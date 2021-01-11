@@ -7,7 +7,7 @@
       <div class="error" v-if="error">
         {{ error }}
       </div>
-      <v-btn @click="create" class="cyan" dark>Create</v-btn>
+      <v-btn @click="create" class="black" dark>Create</v-btn>
     </panel>
   </v-col>
 </v-row>

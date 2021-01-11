@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar fixed class="cyan" dark>
+    <v-toolbar fixed class="black" dark>
       <v-toolbar-title class="mr-4">
         {{ title }}
       </v-toolbar-title>

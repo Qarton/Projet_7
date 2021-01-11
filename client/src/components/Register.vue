@@ -14,7 +14,7 @@
             label="Password"
             ></v-text-field>
             <v-alert dense type="error" v-if="error" v-html="error" />
-            <v-btn @click="register" class="cyan" dark>Register</v-btn>
+            <v-btn @click="register" class="black" dark>Register</v-btn>
           </panel>
         </v-col>
       </v-row>

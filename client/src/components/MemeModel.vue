@@ -1,17 +1,9 @@
 <template>
-      <v-card class="mb-4" flat outlined>
-      <v-toolbar fixed class="cyan" dark>
-        <v-toolbar-title class="mr-4 flex text-center">
-        {{title}}
-        </v-toolbar-title>
-      </v-toolbar>
+      <v-card class="mb-2" flat>
+        <v-card-title>
+          <p class="text-capitalize text-h5 font-weight-bold mb-0"> {{title}} </p>
+        </v-card-title>
       <slot> Slot vide </slot>
-      <v-card-actions>
-      <v-spacer></v-spacer>
-        <v-btn icon>
-          <v-icon>mdi-message-reply-text</v-icon>
-        </v-btn>
-      </v-card-actions>
       </v-card>
 </template>
 

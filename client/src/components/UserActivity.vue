@@ -8,10 +8,9 @@
             </meme-model>
           </div>
           <div v-for="comment in comments" :key="'C'+comment.id" class="py-4 px-2">
-    <v-card outlined>
-      <v-card-title>Message</v-card-title>
-      <v-card-subtitle><pseudo :Utilisateur="comment.UserId" /></v-card-subtitle>
-      <v-card-text>{{comment.text}}</v-card-text>
+    <v-card flat outlined>
+      <v-card-title><pseudo :Utilisateur="comment.UserId" /></v-card-title>
+      <v-card-text class="text-h6 black--text">{{comment.text}}</v-card-text>
     </v-card>
     </div>
         </v-col>

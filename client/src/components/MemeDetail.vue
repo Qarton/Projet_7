@@ -1,8 +1,8 @@
 <template>
 <div>
   <v-row justify="center">
-    <v-col md="6" sm="10">
-      <h1 class="text-center"> {{meme.title}} </h1>
+    <v-col lg ="4" md="6" sm="10">
+      <p class="text-capitalize text-h5 font-weight-bold mb-0"> {{meme.title}} </p>
         <v-img class="mx-2 my-2" :src='meme.imageUrl' alt="MEME" />
         </v-col>
   </v-row>

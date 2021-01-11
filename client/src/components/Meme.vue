@@ -1,9 +1,9 @@
 <template>
 <v-row justify="center">
-        <v-col md="4" sm="8">
-          <div v-for="meme in memes" :key="meme.id" class="py-4 px-2">
+        <v-col lg ="4" md="6" sm="10">
+          <div v-for="meme in memes" :key="meme.id" class="mb-4">
             <meme-model :title="meme.title">
-              <v-img  class="mx-2 my-2" :src='meme.imageUrl' alt="MEME" @click="navigateTo({name: 'meme-detail', params: {memeId: meme.id}})" />
+              <v-img  class="mb-2" :src='meme.imageUrl' alt="MEME" @click="navigateTo({name: 'meme-detail', params: {memeId: meme.id}})" />
             </meme-model>
               <pseudo :Utilisateur="meme.UserId" />
           </div>
