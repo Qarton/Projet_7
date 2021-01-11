@@ -10,9 +10,11 @@
     <v-col md="8" class="d-flex align-center ml-4">
       <strong>Créateur :</strong>
       <pseudo :Utilisateur="testUserId" />
+      Crée le {{ moment(meme.createdAt).format("DD/MM/YYYY") }} à {{ moment(meme.createdAt).format("HH:MM") }}
     </v-col>
   </v-row>
-  <v-row justify="center">
+  <v-divider></v-divider>
+  <v-row class="mt-4" justify="center">
     <v-col md="6" sm="10">
       <meme-comment />
     </v-col>
@@ -21,6 +23,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 import MemeService from '@/services/MemeService'
 import MemeComment from '@/components/MemeComment'
 import Pseudo from '@/components/Pseudo'
@@ -38,7 +41,8 @@ export default {
   data () {
     return {
       meme: {},
-      testUserId: 1
+      testUserId: 1,
+      moment: moment
     }
   },
   async created () {

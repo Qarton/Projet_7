@@ -45,6 +45,10 @@ const routes = [
     path: '/comments',
     name: 'comments',
     component: MemeComment
+  },
+  {
+    path: '*',
+    redirect: 'meme'
   }
 ]
 

@@ -1,6 +1,6 @@
 <template>
 <div @click="navigateTo({name: 'activity', params: {userId: userId}})">
-<v-card class="d-flex align-center" flat>
+<v-card class="d-flex align-center mr-1" flat>
     <v-avatar rounded color="black" size="36">
       <span class="white--text headline">{{userId}}</span>
     </v-avatar>
