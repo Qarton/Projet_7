@@ -11,5 +11,8 @@ export default {
     return Api().get('user', {
       params: userId
     })
+  },
+  delete (userId) {
+    return Api().delete(`user/${userId}`)
   }
 }

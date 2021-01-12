@@ -2,6 +2,7 @@
   {
     "MemeId": 1,
     "UserId": 1,
-    "text": "Youpi"
+    "text": "Youpi",
+    "owner" : "Owner"
   }
 ]

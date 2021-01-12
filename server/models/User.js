@@ -5,8 +5,14 @@ module.exports = (sequelize, Datatypes) => {
             type : Datatypes.STRING,
             unique: true
         },
-        password: Datatypes.STRING
+        password: Datatypes.STRING,
+        name: Datatypes.STRING,
+        firstName: Datatypes.STRING
     })
+    User.associate = function (models) {
+      User.hasMany(models.Comment)
+      User.hasMany(models.Meme)
+    }
 
     return User
     }

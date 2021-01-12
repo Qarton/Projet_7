@@ -5,7 +5,7 @@
     <div v-for="comment in comments" :key="comment.id" class="py-4 px-2">
     <v-card flat outlined>
       <v-card-title>
-        <pseudo :Utilisateur="comment.UserId" />
+        <pseudo :Utilisateur="comment" />
          le {{ moment(comment.createdAt).format("DD/MM/YYYY") }} à {{ moment(comment.createdAt).format("HH:MM") }}
       </v-card-title>
       <v-card-text class="text-h6 black--text">{{comment.text}}</v-card-text>
@@ -35,19 +35,21 @@ export default {
       comments: null,
       text: '',
       userId: null,
+      owner: null,
       moment: moment
     }
   },
   async mounted () {
     const memeId = await this.$store.state.route.params.memeId
     this.meme = (await MemeService.show(memeId)).data
-    if (!this.isUserLoggedIn) {
-      return
-    }
-    this.userId = await this.$store.state.user.id
     this.comments = (await CommentService.index({
       memeId: this.meme.id
     })).data
+    if (!this.isUserLoggedIn) {
+      return
+    }
+    this.owner = await this.$store.state.user.name + ' ' + this.$store.state.user.firstName
+    this.userId = await this.$store.state.user.id
   },
   methods: {
     async addComment () {
@@ -55,7 +57,8 @@ export default {
         this.comment = (await CommentService.post({
           memeId: this.meme.id,
           userId: this.$store.state.user.id,
-          text: this.text
+          text: this.text,
+          owner: this.owner
         })).data
         this.comments = (await CommentService.index({
           memeId: this.meme.id

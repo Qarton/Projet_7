@@ -4,6 +4,8 @@ const MemeController = require('./controllers/MemeController')
 const CommentController = require('./controllers/CommentController')
 const ActivityController = require('./controllers/ActivityController')
 
+//const isAuthenticated = require('./policies/isAuthenticated')
+
 module.exports = (app) => {
     app.post('/register',
     AuthenticationControllerPolicy.register,
@@ -12,6 +14,8 @@ module.exports = (app) => {
     AuthenticationController.login)
     app.get('/user',
     AuthenticationController.index)
+    app.delete('/user/:userId',
+    AuthenticationController.delete)
 
     app.get('/meme',
     MemeController.index)

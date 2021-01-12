@@ -1,5 +1,5 @@
 <template>
-<div>
+<div v-if="this.meme!=null">
   <v-row justify="center">
     <v-col lg ="4" md="6" sm="10">
       <p class="text-capitalize text-h5 font-weight-bold mb-0"> {{meme.title}} </p>
@@ -9,7 +9,7 @@
   <v-row justify="center" class="align-center">
     <v-col md="8" class="d-flex align-center ml-4">
       <strong>Créateur :</strong>
-      <pseudo :Utilisateur="testUserId" />
+      <pseudo :Utilisateur="meme" />
       Crée le {{ moment(meme.createdAt).format("DD/MM/YYYY") }} à {{ moment(meme.createdAt).format("HH:MM") }}
     </v-col>
   </v-row>
@@ -40,15 +40,13 @@ export default {
   },
   data () {
     return {
-      meme: {},
-      testUserId: 1,
+      meme: null,
       moment: moment
     }
   },
-  async created () {
+  async mounted () {
     const memeId = await this.$store.state.route.params.memeId
     this.meme = ((await MemeService.show(memeId))).data
-    this.testUserId = this.meme.UserId
   }
 }
 </script>

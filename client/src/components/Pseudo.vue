@@ -2,26 +2,25 @@
 <div @click="navigateTo({name: 'activity', params: {userId: userId}})">
 <v-card class="d-flex align-center mr-1" flat>
     <v-avatar rounded color="black" size="36">
-      <span class="white--text headline">{{userId}}</span>
+      <v-icon class="white--text headline">mdi-account</v-icon>
     </v-avatar>
-    <strong class="ml-1">{{userEmail}}</strong>
+    <strong class="ml-1">{{owner}}</strong>
 </v-card>
   </div>
 </template>
 
 <script>
-import AuthenticationService from '@/services/AuthenticationService'
 export default {
   data () {
     return {
-      userId: null,
-      userEmail: null
+      owner: null,
+      userId: null
     }
   },
   props: ['Utilisateur'],
   async created () {
-    this.userId = await this.Utilisateur
-    this.userEmail = (await AuthenticationService.index({ userId: this.userId })).data
+    this.owner = await this.Utilisateur.owner
+    this.userId = await this.Utilisateur.UserId
   },
   methods: {
     navigateTo (route) {

@@ -6,7 +6,7 @@
               <v-img  class="mb-2" :src='meme.imageUrl' alt="MEME" @click="navigateTo({name: 'meme-detail', params: {memeId: meme.id}})" />
             </meme-model>
             <v-row align="center">
-              <pseudo :Utilisateur="meme.UserId" />
+              <pseudo :Utilisateur="meme" />
               le {{ moment(meme.createdAt).format("DD/MM/YYYY") }} à {{ moment(meme.createdAt).format("HH:MM") }}
             </v-row>
           </div>
@@ -32,7 +32,6 @@ export default {
   },
   async mounted () {
     this.memes = (await MemeService.index()).data
-    console.log(this.memes)
   },
   methods: {
     navigateTo (route) {

@@ -3,6 +3,16 @@
         <v-col md="4" sm="8">
           <panel title="Register">
             <v-text-field
+            v-model="name"
+            label="Nom"
+            @keyup.enter="register"
+            ></v-text-field>
+            <v-text-field
+            v-model="firstName"
+            label="Prénom"
+            @keyup.enter="register"
+            ></v-text-field>
+            <v-text-field
             v-model="email"
             label="Email"
             @keyup.enter="register"
@@ -28,6 +38,8 @@ export default {
     return {
       email: '',
       password: '',
+      name: '',
+      firstName: '',
       error: null,
       success: null
     }
@@ -40,7 +52,9 @@ export default {
       try {
         const response = await AuthenticationService.register({
           email: this.email,
-          password: this.password
+          password: this.password,
+          name: this.name,
+          firstName: this.firstName
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)

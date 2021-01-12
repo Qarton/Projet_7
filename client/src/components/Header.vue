@@ -2,7 +2,7 @@
   <div>
     <v-toolbar fixed class="black" dark>
       <v-toolbar-title class="mr-4">
-          <v-btn text dark @click="navigateTo({name: 'Home'})">
+          <v-btn text dark @click="navigateTo({name: 'meme'})">
             159GAG
         </v-btn>
         </v-toolbar-title>
@@ -46,7 +46,7 @@ export default {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
       this.$router.push({
-        name: 'Home'
+        name: 'meme'
       })
     }
   }

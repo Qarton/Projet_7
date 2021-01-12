@@ -6,8 +6,18 @@ module.exports =  {
             email : Joi.string().email(),
             password: Joi.string().regex(
                 new RegExp('^[a-zA-Z0-9]{3,16}$')
-            )
-        })
+            ),
+            name: Joi.string()
+            .alphanum()
+            .min(3)
+            .max(30)
+            .required(),
+            firstName: Joi.string()
+            .alphanum()
+            .min(3)
+            .max(30)
+            .required(),
+            })
 
         const{error, value} = schema.validate(req.body)
 
@@ -21,6 +31,16 @@ module.exports =  {
                 case 'password' :
                     res.status(400).send({
                         error : 'Invalid password'
+                    })
+                    break
+                case 'name' :
+                    res.status(400).send({
+                        error : 'Invalid name'
+                    })
+                    break
+                case 'firstName' :
+                    res.status(400).send({
+                        error : 'Invalid firstName'
                     })
                     break
                 default :

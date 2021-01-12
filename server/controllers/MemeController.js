@@ -6,6 +6,7 @@ module.exports = {
       const meme = await Meme.findAll({
         limit: 10
       })
+      console.log(meme)
       res.send(meme)
     } catch (err) {
       res.status(400).send({

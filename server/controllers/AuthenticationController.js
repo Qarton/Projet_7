@@ -68,8 +68,6 @@ module.exports = {
                 error: 'Error occured'
             })
         }
-        
-        
     },
     async index(req, res) {
       try {
@@ -84,6 +82,18 @@ module.exports = {
       } catch (err) {
         res.status(400).send({
           error: 'Error fetch name'
+        })
+      }
+    },
+    async delete(req, res) {
+      try {
+        const {userId} = req.params
+        const user = await User.findByPk(userId)
+        await user.destroy()
+        res.send(user)
+      } catch (err) {
+        res.status(400).send({
+          error: 'Error deleting User'
         })
       }
     }

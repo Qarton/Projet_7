@@ -22,7 +22,8 @@ export default {
       meme: {
         title: null,
         imageUrl: null,
-        UserId: null
+        UserId: null,
+        owner: null
       },
       error: null,
       required: (value) => !!value || 'Required'
@@ -30,6 +31,7 @@ export default {
   },
   async mounted () {
     this.meme.UserId = await this.$store.state.user.id
+    this.meme.owner = await this.$store.state.user.name + ' ' + this.$store.state.user.firstName
   },
   methods: {
     async create () {
