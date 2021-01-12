@@ -4,9 +4,9 @@ const config = require('../config/config')
 const bcrypt = require('bcrypt')
 
 function jwtSignUser (user) {
-    const ONE_WEEK = 60 * 60 * 24 * 7
+    const ONE_HOUR = 60 * 60
     return jwt.sign(user, config.authentication.jwtSecret, {
-        expiresIn : ONE_WEEK
+        expiresIn : ONE_HOUR
     })
 }
 
@@ -71,7 +71,6 @@ module.exports = {
     },
     async index(req, res) {
       try {
-        console.log(req.query)
         const userId = req.query.userId
         const userEmail = await User.findOne({
           where: {

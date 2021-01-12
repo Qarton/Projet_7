@@ -74,7 +74,6 @@ module.exports = {
         comments: comments,
         memes: memes
       }
-      console.log(answer)
       res.send(answer)
     } catch (err) {
       res.status(500).send({

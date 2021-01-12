@@ -2,16 +2,20 @@
 <div>
   <v-btn v-if="isUserLoggedIn && userIdActivity===userId" @click="deleteUser(userId)" class="black" dark>Delete</v-btn>
   <v-row justify="center">
-    <v-col lg ="4" md="6" sm="8">
-      <div v-for="meme in memes" :key="'M'+meme.id" class="py-4 px-2">
-        <meme-model :title="meme.title">
-        <v-img  class="mx-2 my-2" :src='meme.imageUrl' alt="MEME" @click="navigateTo({name: 'meme-detail', params: {memeId: meme.id}})" />
-      </meme-model>
-      <v-row align="center">
-        <pseudo :Utilisateur="meme" />
-        le {{ moment(meme.createdAt).format("DD/MM/YYYY") }} à {{ moment(meme.createdAt).format("HH:MM") }}
-      </v-row>
-      </div>
+    <v-col md="8">
+      <v-expansion-panels>
+    <v-expansion-panel
+      v-for="meme in memes"
+      :key="'M'+meme.id"
+    >
+      <v-expansion-panel-header>
+        {{meme.title}}
+      </v-expansion-panel-header>
+      <v-expansion-panel-content>
+        <v-img  class="mb-2" :src='meme.imageUrl' alt="MEME" @click="navigateTo({name: 'meme-detail', params: {memeId: meme.id}})" />
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </v-expansion-panels>
     </v-col>
   </v-row>
   <v-row justify="center">
@@ -33,12 +37,10 @@
 import moment from 'moment'
 import AuthenticationService from '@/services/AuthenticationService'
 import ActivityService from '@/services/ActivityService'
-import MemeModel from '@/components/MemeModel'
 import Pseudo from '@/components/Pseudo'
 import { mapState } from 'vuex'
 export default {
   components: {
-    MemeModel,
     Pseudo
   },
   computed: {

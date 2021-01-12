@@ -24,7 +24,8 @@ import Pseudo from '@/components/Pseudo'
 export default {
   computed: {
     ...mapState([
-      'isUserLoggedIn'
+      'isUserLoggedIn',
+      'user'
     ])
   },
   components: {
@@ -48,15 +49,15 @@ export default {
     if (!this.isUserLoggedIn) {
       return
     }
-    this.owner = await this.$store.state.user.name + ' ' + this.$store.state.user.firstName
-    this.userId = await this.$store.state.user.id
+    this.owner = await this.user.name + ' ' + this.user.firstName
+    this.userId = await this.user.id
   },
   methods: {
     async addComment () {
       try {
         this.comment = (await CommentService.post({
           memeId: this.meme.id,
-          userId: this.$store.state.user.id,
+          userId: this.user.id,
           text: this.text,
           owner: this.owner
         })).data
@@ -70,7 +71,6 @@ export default {
     async deleteComment (commentId) {
       try {
         this.comments.filter((obj) => { return obj.id !== commentId })
-        console.log(commentId)
         await CommentService.delete(commentId)
         this.comments = (await CommentService.index({
           memeId: this.meme.id

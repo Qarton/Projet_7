@@ -16,7 +16,13 @@
 <script>
 import Panel from '@/components/Panel'
 import MemeService from '@/services/MemeService'
+import { mapState } from 'vuex'
 export default {
+  computed: {
+    ...mapState([
+      'user'
+    ])
+  },
   data () {
     return {
       meme: {
@@ -30,8 +36,8 @@ export default {
     }
   },
   async mounted () {
-    this.meme.UserId = await this.$store.state.user.id
-    this.meme.owner = await this.$store.state.user.name + ' ' + this.$store.state.user.firstName
+    this.meme.UserId = await this.user.id
+    this.meme.owner = await this.user.name + ' ' + this.user.firstName
   },
   methods: {
     async create () {
