@@ -55,7 +55,5 @@ export default {
 </script>
 
 <style scoped>
-.error {
-  color: white;
-}
+
 </style>

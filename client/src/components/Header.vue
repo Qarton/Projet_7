@@ -22,6 +22,9 @@
         <v-btn v-if="!isUserLoggedIn" class="primary rounded" text dark @click="navigateTo({name: 'register'})">
             Sign up
         </v-btn>
+        <v-btn v-if="isUserLoggedIn" @click="navigateTo({name: 'activity', params: {userId: user.id}})">
+          Activity
+        </v-btn>
         <v-btn v-if="isUserLoggedIn" text dark @click="logout">
             Log out
         </v-btn>
@@ -35,7 +38,8 @@ import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState([
-      'isUserLoggedIn'
+      'isUserLoggedIn',
+      'user'
     ])
   },
   methods: {

@@ -10,7 +10,7 @@
     <v-col md="8" class="d-flex align-center ml-4">
       <strong>Créateur :</strong>
       <pseudo :Utilisateur="meme" />
-      Crée le {{ moment(meme.createdAt).format("DD/MM/YYYY") }} à {{ moment(meme.createdAt).format("HH:MM") }}
+      Crée le {{ moment(meme.createdAt).format("DD/MM/YYYY") }} à {{ moment(meme.createdAt).format("hh:mm") }}
     </v-col>
   </v-row>
   <v-divider></v-divider>

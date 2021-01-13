@@ -1,10 +1,11 @@
-const { Comment,Meme } = require('../models')
+const { Comment,Meme,User } = require('../models')
 
 module.exports = {
   async search (req, res) {
     try {
       let comments = null
       let memes = null
+      let owner = null
       const userId = req.query.userId
       comments = await Comment.findAll({
           where: {
@@ -16,7 +17,14 @@ module.exports = {
           UserId : userId
         }
       })
+      let user = await User.findOne({
+        where: {
+          id : userId
+        }
+      })
+      owner = user.name + ' ' + user.firstName
       let answer = {
+        owner: owner,
         comments: comments,
         memes: memes
       }

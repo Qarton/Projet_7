@@ -6,7 +6,7 @@
     <v-card flat outlined>
       <v-card-title>
         <pseudo :Utilisateur="comment" />
-         le {{ moment(comment.createdAt).format("DD/MM/YYYY") }} à {{ moment(comment.createdAt).format("HH:MM") }}
+         le {{ moment(comment.createdAt).format("DD/MM/YYYY") }} à {{ moment(comment.createdAt).format("hh:mm") }}
       </v-card-title>
       <v-card-text class="text-h6 black--text">{{comment.text}}</v-card-text>
     </v-card>
@@ -64,6 +64,7 @@ export default {
         this.comments = (await CommentService.index({
           memeId: this.meme.id
         })).data
+        this.text = ''
       } catch (err) {
         console.log(err)
       }

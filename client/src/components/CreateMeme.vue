@@ -4,9 +4,7 @@
     <panel title="Create Meme">
       <v-text-field required :rules="[required]" v-model="meme.title" label="Title"></v-text-field>
       <v-text-field required :rules="[required]" v-model="meme.imageUrl" label="Image Url"></v-text-field>
-      <div class="error" v-if="error">
-        {{ error }}
-      </div>
+      <v-alert dense type="error" v-if="error" v-html="error" />
       <v-btn @click="create" class="black" dark>Create</v-btn>
     </panel>
   </v-col>
@@ -42,11 +40,11 @@ export default {
   methods: {
     async create () {
       this.error = null
-      // const testFields = await Object.keys(this.meme).every(key => !!this.meme[key])
-      // if (!testFields) {
-      //   this.error = 'Please fill all the required fields.'
-      //   return
-      // }
+      const testFields = await Object.keys(this.meme).every(key => !!this.meme[key])
+      if (!testFields) {
+        this.error = 'Please fill all the required fields.'
+        return
+      }
       try {
         await MemeService.post(this.meme)
         this.$router.push({

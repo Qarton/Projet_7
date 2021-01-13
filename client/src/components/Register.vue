@@ -3,25 +3,25 @@
         <v-col md="4" sm="8">
           <panel title="Register">
             <v-text-field
-            v-model="name"
-            label="Nom"
-            @keyup.enter="register"
+              v-model="name"
+              label="Nom"
+              @keyup.enter="register"
             ></v-text-field>
             <v-text-field
-            v-model="firstName"
-            label="Prénom"
-            @keyup.enter="register"
+              v-model="firstName"
+              label="Prénom"
+              @keyup.enter="register"
             ></v-text-field>
             <v-text-field
-            v-model="email"
-            label="Email"
-            @keyup.enter="register"
+              v-model="email"
+              label="Email"
+              @keyup.enter="register"
             ></v-text-field>
             <v-text-field
-            v-model="password"
-            @keyup.enter="register"
-            type="password"
-            label="Password"
+              v-model="password"
+              @keyup.enter="register"
+              type="password"
+              label="Password"
             ></v-text-field>
             <v-alert dense type="error" v-if="error" v-html="error" />
             <v-btn @click="register" class="black" dark>Register</v-btn>
@@ -70,7 +70,5 @@ export default {
 </script>
 
 <style scoped>
-.error {
-  color: white;
-}
+
 </style>
