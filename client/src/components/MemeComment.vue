@@ -11,6 +11,7 @@
       <v-card-text class="text-h6 black--text">{{comment.text}}</v-card-text>
     </v-card>
     <v-btn v-if="isUserLoggedIn && comment && userId===comment.UserId" @click="deleteComment(comment.id)" class="black" dark>Delete</v-btn>
+    <v-btn v-if="isUserLoggedIn && user.admin===true" @click="deleteComment(comment.id)" class="black" dark>Admin Delete</v-btn>
     </div>
   </div>
 </template>

@@ -7,7 +7,11 @@ module.exports = (sequelize, Datatypes) => {
         },
         password: Datatypes.STRING,
         name: Datatypes.STRING,
-        firstName: Datatypes.STRING
+        firstName: Datatypes.STRING,
+        admin: {
+          type: Datatypes.BOOLEAN,
+          defaultValue: false
+        }
     })
     User.associate = function (models) {
       User.hasMany(models.Comment)
