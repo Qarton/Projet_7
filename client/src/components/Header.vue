@@ -1,4 +1,5 @@
 <template>
+<!-- Header de la page avec boutons pour se connecter et s'enregistrer -->
   <div>
     <v-toolbar fixed class="black" dark>
       <v-toolbar-title class="mr-4">

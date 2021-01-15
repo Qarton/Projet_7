@@ -1,4 +1,5 @@
 <template>
+<!-- Affichage du pseudo -->
 <div @click="navigateTo({name: 'user', params: {userId: userId}})">
 <v-card class="d-flex align-center mr-1" flat>
     <v-avatar rounded color="black" size="36">

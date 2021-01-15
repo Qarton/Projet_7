@@ -1,5 +1,6 @@
 <template>
 <div>
+  <!-- Affichage de L'activité d'un utilisateur -->
   <v-btn v-if="isUserLoggedIn && userIdActivity===userId" @click="deleteUser(userId)" class="black" dark>Delete</v-btn>
   <v-row justify="center">
     <v-col md="8">
@@ -9,6 +10,7 @@
   <v-row justify="center">
     <v-col md="8">
       <h2>Meme</h2>
+      <!-- Affichage des Meme -->
     <v-expansion-panels>
     <v-expansion-panel
       v-for="meme in search.Memes"
@@ -30,6 +32,7 @@
   <v-row justify="center">
     <v-col md="8">
       <h2>Commentaire</h2>
+      <!-- Affichage de L'activité des commentaires -->
           <v-expansion-panels>
     <v-expansion-panel v-for="comment in search.Comments" :key="'C'+comment.id">
       <v-expansion-panel-header>

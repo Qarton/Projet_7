@@ -1,4 +1,5 @@
 <template>
+<!-- Détail d'un Meme -->
 <div v-if="this.meme!=null">
   <v-row justify="center">
     <v-col lg ="4" md="6" sm="10">
@@ -14,6 +15,7 @@
     </v-col>
   </v-row>
   <v-divider></v-divider>
+  <!-- Affichage des commentaires du Meme -->
   <v-row class="mt-4" justify="center">
     <v-col md="6" sm="10">
       <v-textarea v-if="isUserLoggedIn" outlined label="Votre message" v-model="text"></v-textarea>

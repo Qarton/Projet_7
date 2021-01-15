@@ -19,6 +19,7 @@ const correctPassword = (enteredPassword, originalPassword) => {
   }
 
 module.exports = {
+    // enregistrement d'un utilisateur
     async register (req, res) {
         const hash = bcrypt.hashSync(req.body.password, 10);
         try {
@@ -37,6 +38,7 @@ module.exports = {
             })
         }
     },
+    // Login d'un utilisateur
     async login (req, res) {
         try {
             const {email, password} = req.body
@@ -69,6 +71,7 @@ module.exports = {
             })
         }
     },
+    // Accès à l'historique d'un utilisateur
     async index(req, res) {
       try {
         const userId = req.query.userId

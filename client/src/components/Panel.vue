@@ -1,4 +1,5 @@
 <template>
+<!-- panneau -->
   <div>
     <v-toolbar fixed class="black" dark>
       <v-toolbar-title class="mr-4">

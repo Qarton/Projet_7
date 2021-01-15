@@ -1,6 +1,7 @@
 const { Meme, User, Comment} = require('../models')
 
 module.exports = {
+  // Affichage de tout les Memes
   async index(req, res) {
     try {
       const meme = await Meme.findAll()
@@ -11,6 +12,7 @@ module.exports = {
       })
     }
   },
+  // Affichage du détail d'un Meme et de ses commentaires
   async show(req, res) {
     try {
       const meme = await Meme.findByPk(req.params.memeId,{include: Comment})
@@ -21,6 +23,7 @@ module.exports = {
       })
     }
   },
+  //Enregistrement d'un Meme
   async post(req, res) {
     try {
       const meme = await Meme.create(req.body)

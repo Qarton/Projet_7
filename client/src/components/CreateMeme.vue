@@ -1,6 +1,7 @@
 <template>
 <v-row justify="center">
   <v-col md="4" sm="8">
+    <!-- panneau de création d'un Meme -->
     <panel title="Create Meme">
       <v-text-field required :rules="[required]" v-model="meme.title" label="Title"></v-text-field>
       <v-text-field required :rules="[required]" v-model="meme.imageUrl" label="Image Url"></v-text-field>

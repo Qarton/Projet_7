@@ -1,6 +1,7 @@
 const { Comment,Meme } = require('../models')
 
 module.exports = {
+  //Ajout d'un commentaire
   async post(req, res) {
     try {
       const {memeId, userId, text, owner} = req.body
@@ -23,6 +24,7 @@ module.exports = {
       })
     }
   },
+  //Suppression d'un commentaire
   async delete(req, res) {
     try {
       const {commentId} = req.params
