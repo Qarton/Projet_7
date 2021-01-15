@@ -3,7 +3,7 @@ const {
   Meme,
   User,
   Comment
-} = require('../models')
+} = require('../src/models')
 
 const delay = require('delay')
 const Promise = require('bluebird')
