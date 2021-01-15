@@ -33,5 +33,20 @@ module.exports = {
         error: 'Error creating Meme'
       })
     }
+  },
+  //Modification d'un meme
+  async put(req, res) {
+    try {
+      await Meme.update(req.body, {
+        where: {
+          id: req.params.memeId
+        }
+      })
+      res.send(req.body)
+    } catch (err) {
+      res.status(400).send({
+        error: 'Error creating Meme'
+      })
+    }
   }
 }

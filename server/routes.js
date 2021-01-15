@@ -20,6 +20,8 @@ module.exports = (app) => {
     MemeController.index)
     app.get('/meme/:memeId',
     MemeController.show)
+    app.put('/meme/:memeId',
+    MemeController.put)
     app.post('/meme',
     isAuthenticated,
     MemeController.post)

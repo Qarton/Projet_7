@@ -6,6 +6,7 @@ import Login from '../components/Login.vue'
 import Meme from '../components/Meme.vue'
 import CreateMeme from '../components/CreateMeme.vue'
 import MemeDetail from '../components/MemeDetail.vue'
+import MemeEdit from '../components/MemeEdit.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/meme/:memeId',
     name: 'meme-detail',
     component: MemeDetail
+  },
+  {
+    path: '/meme/:memeId/edit',
+    name: 'meme-edit',
+    component: MemeEdit
   },
   {
     path: '*',
