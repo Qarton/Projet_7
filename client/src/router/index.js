@@ -6,14 +6,13 @@ import Login from '../components/Login.vue'
 import Meme from '../components/Meme.vue'
 import CreateMeme from '../components/CreateMeme.vue'
 import MemeDetail from '../components/MemeDetail.vue'
-import MemeComment from '../components/MemeComment.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/activity',
-    name: 'activity',
+    path: '/user',
+    name: 'user',
     component: UserActivity
   },
   {
@@ -40,11 +39,6 @@ const routes = [
     path: '/meme/:memeId',
     name: 'meme-detail',
     component: MemeDetail
-  },
-  {
-    path: '/comments',
-    name: 'comments',
-    component: MemeComment
   },
   {
     path: '*',

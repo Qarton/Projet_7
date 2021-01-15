@@ -22,7 +22,7 @@
         <v-btn v-if="!isUserLoggedIn" class="primary rounded" text dark @click="navigateTo({name: 'register'})">
             Sign up
         </v-btn>
-        <v-btn v-if="isUserLoggedIn" @click="navigateTo({name: 'activity', params: {userId: user.id}})">
+        <v-btn v-if="isUserLoggedIn" @click="navigateTo({name: 'user', params: {userId: user.id}})">
           Activity
         </v-btn>
         <v-btn v-if="isUserLoggedIn" text dark @click="logout">

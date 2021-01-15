@@ -9,7 +9,9 @@ export default {
   },
   index (userId) {
     return Api().get('user', {
-      params: userId
+      params: {
+        userId: userId
+      }
     })
   },
   delete (userId) {

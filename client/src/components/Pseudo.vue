@@ -1,5 +1,5 @@
 <template>
-<div @click="navigateTo({name: 'activity', params: {userId: userId}})">
+<div @click="navigateTo({name: 'user', params: {userId: userId}})">
 <v-card class="d-flex align-center mr-1" flat>
     <v-avatar rounded color="black" size="36">
       <v-icon class="white--text headline">mdi-account</v-icon>

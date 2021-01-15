@@ -1,4 +1,4 @@
-const {User} = require('../models')
+const {User,Meme,Comment} = require('../models')
 const jwt = require ('jsonwebtoken')
 const config = require('../config/config')
 const bcrypt = require('bcrypt')
@@ -75,9 +75,11 @@ module.exports = {
         const userEmail = await User.findOne({
           where: {
             id: userId
-          }
+          },
+          attributes: ['name','firstName'],
+          include:  [{model: Comment},{model: Meme}]
         })
-        res.send(userEmail.email)
+        res.send(userEmail)
       } catch (err) {
         res.status(400).send({
           error: 'Error fetch name'
