@@ -2,6 +2,7 @@ const AuthenticationController = require('./controllers/AuthenticationController
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 const MemeController = require('./controllers/MemeController')
 const CommentController = require('./controllers/CommentController')
+const multer = require('./middleware/multer-config');
 
 const isAuthenticated = require('./policies/isAuthenticated')
 
@@ -24,6 +25,7 @@ module.exports = (app) => {
     MemeController.put)
     app.post('/meme',
     isAuthenticated,
+    multer,
     MemeController.post)
 
     app.post('/comments',

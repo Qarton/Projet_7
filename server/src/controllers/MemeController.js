@@ -26,8 +26,28 @@ module.exports = {
   //Enregistrement d'un Meme
   async post(req, res) {
     try {
-      const meme = await Meme.create(req.body)
-      res.send(meme)
+      // const meme = await Meme.create(req.body)
+      let imageUrl
+      let title = req.body.title
+      if (req.file != undefined) {
+        imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+      }
+      else {
+        imageUrl == null
+      }
+      if ((title == 'null' && imageUrl == null)) {
+        res.status(400).json({ error: 'Rien à publier' })
+      } else {
+        let meme = {
+          title: title,
+          imageUrl: imageUrl,
+          owner: 'test'
+        }
+        console.log(meme)
+        await Meme.create(meme)
+        res.send(meme)
+      }
+      // res.send(meme)
     } catch (err) {
       res.status(400).send({
         error: 'Error creating Meme'

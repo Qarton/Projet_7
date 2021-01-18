@@ -2,17 +2,9 @@
 <!-- Header de la page avec boutons pour se connecter et s'enregistrer -->
   <div>
     <v-toolbar fixed class="black" dark>
-      <v-toolbar-title class="mr-4">
-          <v-btn text dark @click="navigateTo({name: 'meme'})">
-            159GAG
-        </v-btn>
-        </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn text dark @click="navigateTo({name: 'meme'})">
-            Groupomania
-        </v-btn>
-        <v-spacer></v-spacer>
       <v-toolbar-items class="py-4">
+        <v-img max-width="250" contain :src="require('../assets/icon-left-font-monochrome-white.svg')" alt="logo" @click="navigateTo({name: 'meme'})" />
+        <v-spacer></v-spacer>
         <v-btn v-if="isUserLoggedIn" class="primary rounded" text dark @click="navigateTo({name: 'meme-create'})">
           <v-icon class="pr-1">mdi-plus</v-icon>
             Add Meme
@@ -23,7 +15,7 @@
         <v-btn v-if="!isUserLoggedIn" class="primary rounded" text dark @click="navigateTo({name: 'register'})">
             Sign up
         </v-btn>
-        <v-btn v-if="isUserLoggedIn" @click="navigateTo({name: 'user', params: {userId: user.id}})">
+        <v-btn v-if="isUserLoggedIn" text dark @click="navigateTo({name: 'user', params: {userId: user.id}})">
           Activity
         </v-btn>
         <v-btn v-if="isUserLoggedIn" text dark @click="logout">

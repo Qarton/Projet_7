@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const passport = require('passport')
 const {sequelize} = require('./models')
 const config = require('./config/config')
+const path = require('path')
 
 require('./passport')
 
@@ -14,9 +15,7 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(passport.initialize())
 app.use(passport.session())
-
-
-
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 require('./routes')(app)
 
