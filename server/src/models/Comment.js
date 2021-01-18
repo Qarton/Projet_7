@@ -7,8 +7,7 @@ module.exports = (sequelize, Datatypes) => {
 
     Comment.associate = function (models) {
       Comment.belongsTo(models.User, { onDelete: 'CASCADE' })
-      Comment.belongsTo(models.Meme)
+      Comment.belongsTo(models.Meme, { onDelete: 'CASCADE' })
     }
-
     return Comment
     }

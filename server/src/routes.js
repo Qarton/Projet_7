@@ -22,11 +22,14 @@ module.exports = (app) => {
     app.get('/meme/:memeId',
     MemeController.show)
     app.put('/meme/:memeId',
+    multer,
     MemeController.put)
     app.post('/meme',
     isAuthenticated,
     multer,
     MemeController.post)
+    app.delete('/meme/:memeId',
+    MemeController.delete)
 
     app.post('/comments',
     isAuthenticated,

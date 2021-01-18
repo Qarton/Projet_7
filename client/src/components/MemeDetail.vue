@@ -2,6 +2,7 @@
 <!-- Détail d'un Meme -->
 <div v-if="this.meme!=null">
   <v-btn v-if="isUserLoggedIn &&  user.id===meme.UserId" @click="navigateTo({name: 'meme-edit', params: {memeId: meme.id}})" class="black" dark>Edit</v-btn>
+  <v-btn v-if="isUserLoggedIn &&  user.id===meme.UserId" @click="deleteMeme(meme.id)" class="black" dark>Delete</v-btn>
   <v-row justify="center">
     <v-col lg ="4" md="6" sm="10">
       <p class="text-capitalize text-h5 font-weight-bold mb-0"> {{meme.title}} </p>
@@ -70,6 +71,16 @@ export default {
         this.meme.Comments.filter((obj) => { return obj.id !== commentId })
         await CommentService.delete(commentId)
         this.meme = ((await MemeService.show(this.meme.id))).data
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async deleteMeme (memeId) {
+      try {
+        await MemeService.delete(memeId)
+        this.$router.push({
+          name: 'meme'
+        })
       } catch (err) {
         console.log(err)
       }

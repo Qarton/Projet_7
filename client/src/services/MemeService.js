@@ -10,7 +10,10 @@ export default {
   show (memeId) {
     return Api().get(`meme/${memeId}`)
   },
-  put (meme) {
-    return Api().put(`meme/${meme.id}`, meme)
+  put (fd) {
+    return Api().put(`meme/${fd.get('memeId')}`, fd)
+  },
+  delete (memeId) {
+    return Api().delete(`meme/${memeId}`)
   }
 }

@@ -4,7 +4,17 @@
     <!-- panneau de Modification d'un Meme -->
     <panel title="Edit Meme">
       <v-text-field required :rules="[required]" v-model="meme.title" label="Title"></v-text-field>
-      <v-text-field required :rules="[required]" v-model="meme.imageUrl" label="Image Url"></v-text-field>
+      <div class="custom-file">
+            <input
+              name="imageUrl"
+              type="file"
+              class="custom-file-input"
+              id="imageUrl"
+              aria-describedby="imageUrlAddon"
+              @change="onFileChange"
+            />
+            <label class="custom-file-label" for="imageUrl">Choose file</label>
+          </div>
       <v-alert dense type="error" v-if="error" v-html="error" />
       <v-btn @click="edit" class="black" dark>Edit</v-btn>
     </panel>
@@ -36,13 +46,19 @@ export default {
   methods: {
     async edit () {
       this.error = null
-      const testFields = await Object.keys(this.meme).every(key => !!this.meme[key])
-      if (!testFields) {
-        this.error = 'Please fill all the required fields.'
-        return
-      }
+      const fd = new FormData()
+      const memeId = this.meme.id
+      fd.append('imageUrl', this.meme.imageUrl)
+      fd.append('title', this.meme.title)
+      fd.append('memeId', memeId)
+      console.log(fd.get('imageUrl'))
+      // const testFields = await Object.keys(this.meme).every(key => !!this.meme[key])
+      // if (!testFields) {
+      //   this.error = 'Please fill all the required fields.'
+      //   return
+      // }
       try {
-        await MemeService.put(this.meme)
+        await MemeService.put(fd)
         this.$router.push({
           name: 'meme',
           params: {
@@ -52,6 +68,9 @@ export default {
       } catch (err) {
         console.log(err)
       }
+    },
+    onFileChange (e) {
+      this.meme.imageUrl = e.target.files[0] || e.dataTransfer.files
     }
   },
   components: {

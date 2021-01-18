@@ -14,8 +14,8 @@
               @change="onFileChange"
             />
             <label class="custom-file-label" for="imageUrl">Choose file</label>
-            <v-alert dense type="error" v-if="error" v-html="error" />
           </div>
+          <v-alert dense type="error" v-if="error" v-html="error" />
       <v-btn @click="create" class="black" dark>Create</v-btn>
     </panel>
   </v-col>
