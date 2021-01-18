@@ -4,8 +4,6 @@
     <!-- panneau de création d'un Meme -->
     <panel title="Create Meme">
       <v-text-field required :rules="[required]" v-model="meme.title" label="Title"></v-text-field>
-      <v-text-field required :rules="[required]" v-model="meme.imageUrl" label="Image Url"></v-text-field>
-      <v-alert dense type="error" v-if="error" v-html="error" />
       <div class="custom-file">
             <input
               name="imageUrl"
@@ -16,6 +14,7 @@
               @change="onFileChange"
             />
             <label class="custom-file-label" for="imageUrl">Choose file</label>
+            <v-alert dense type="error" v-if="error" v-html="error" />
           </div>
       <v-btn @click="create" class="black" dark>Create</v-btn>
     </panel>
@@ -55,12 +54,13 @@ export default {
       const fd = new FormData()
       fd.append('imageUrl', this.meme.imageUrl)
       fd.append('title', this.meme.title)
+      fd.append('owner', this.meme.owner)
+      fd.append('UserId', this.meme.UserId)
       // const testFields = await Object.keys(this.meme).every(key => !!this.meme[key])
       // if (!testFields) {
       //   this.error = 'Please fill all the required fields.'
       //   return
       // }
-      console.log(fd)
       try {
         await MemeService.post(fd)
         this.$router.push({
