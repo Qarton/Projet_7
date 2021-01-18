@@ -36,17 +36,11 @@ export default {
     return {
       meme: {
         title: null,
-        imageUrl: null,
-        UserId: null,
-        owner: null
+        imageUrl: null
       },
       error: null,
       required: (value) => !!value || 'Required'
     }
-  },
-  async mounted () {
-    this.meme.UserId = await this.user.id
-    this.meme.owner = await this.user.name + ' ' + this.user.firstName
   },
   methods: {
     async create () {
@@ -54,8 +48,6 @@ export default {
       const fd = new FormData()
       fd.append('imageUrl', this.meme.imageUrl)
       fd.append('title', this.meme.title)
-      fd.append('owner', this.meme.owner)
-      fd.append('UserId', this.meme.UserId)
       // const testFields = await Object.keys(this.meme).every(key => !!this.meme[key])
       // if (!testFields) {
       //   this.error = 'Please fill all the required fields.'

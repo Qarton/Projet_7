@@ -29,9 +29,9 @@ module.exports = {
       // const meme = await Meme.create(req.body)
       let imageUrl
       let title = req.body.title
-      let owner = req.body.owner
-      let UserId = req.body.UserId
-      console.log(owner)
+      let owner = req.user.firstName + ' ' + req.user.name
+      let UserId = req.user.id
+      console.log(req.user.id)
       if (req.file != undefined) {
         imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
       }
