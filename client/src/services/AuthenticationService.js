@@ -8,11 +8,7 @@ export default {
     return Api().post('login', credentials)
   },
   index (userId) {
-    return Api().get('user', {
-      params: {
-        userId: userId
-      }
-    })
+    return Api().get(`user/${userId}`)
   },
   delete (userId) {
     return Api().delete(`user/${userId}`)

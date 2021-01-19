@@ -12,7 +12,7 @@ module.exports = (app) => {
     AuthenticationController.register)
     app.post('/login',
     AuthenticationController.login)
-    app.get('/user',
+    app.get('/user/:userId',
     AuthenticationController.index)
     app.delete('/user/:userId',
     AuthenticationController.delete)

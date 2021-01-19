@@ -75,7 +75,7 @@ module.exports = {
     // Accès à l'historique d'un utilisateur
     async index(req, res) {
       try {
-        const userId = req.query.userId
+        const userId = req.params.userId
         const userEmail = await User.findOne({
           where: {
             id: userId

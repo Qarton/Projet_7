@@ -4,17 +4,13 @@
     <!-- panneau de Modification d'un Meme -->
     <panel title="Edit Meme">
       <v-text-field required :rules="[required]" v-model="meme.title" label="Title"></v-text-field>
-      <div class="custom-file">
-            <input
-              name="imageUrl"
-              type="file"
-              class="custom-file-input"
-              id="imageUrl"
-              aria-describedby="imageUrlAddon"
-              @change="onFileChange"
-            />
-            <label class="custom-file-label" for="imageUrl">Choose file</label>
-          </div>
+      <v-file-input
+        label="Ajouter une photo"
+        filled
+        prepend-icon="mdi-camera"
+        type="file"
+        @change="selectFile"
+      ></v-file-input>
       <v-alert dense type="error" v-if="error" v-html="error" />
       <v-btn @click="edit" class="black" dark>Edit</v-btn>
     </panel>
@@ -69,8 +65,8 @@ export default {
         console.log(err)
       }
     },
-    onFileChange (e) {
-      this.meme.imageUrl = e.target.files[0] || e.dataTransfer.files
+    selectFile (file) {
+      this.meme.imageUrl = file
     }
   },
   components: {
