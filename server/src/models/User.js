@@ -17,6 +17,5 @@ module.exports = (sequelize, Datatypes) => {
       User.hasMany(models.Comment)
       User.hasMany(models.Meme)
     }
-
     return User
     }
