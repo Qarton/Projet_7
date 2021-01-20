@@ -1,20 +1,20 @@
 [
   {
-    "title": "Test",
-    "imageUrl": "https://img-9gag-fun.9cache.com/photo/a9EbnN1_700bwp.webp",
-    "UserId": 1,
-    "owner" : "Owner"
+    "title": "Encore post",
+    "imageUrl": "http://localhost:8081/images/Base1.jpg",
+    "UserId": 2,
+    "owner" : "John Doe"
   },
   {
-    "title": "deuxieme TEST",
-    "imageUrl": "https://img-9gag-fun.9cache.com/photo/a27EQOw_700bwp.webp",
-    "UserId": 1,
-    "owner" : "Owner"
+    "title": "Un autre post",
+    "imageUrl": "http://localhost:8081/images/Base2.jpg",
+    "UserId": 2,
+    "owner" : "John Doe"
   },
   {
-    "title": "zae",
-    "imageUrl": "https://img-9gag-fun.9cache.com/photo/aMK2v36_700bwp.webp",
-    "UserId": 1,
-    "owner" : "Owner"
+    "title": "Un post",
+    "imageUrl": "http://localhost:8081/images/Base3.jpg",
+    "UserId": 2,
+    "owner" : "John Doe"
   }
 ]

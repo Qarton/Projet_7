@@ -5,11 +5,13 @@ const morgan = require('morgan')
 const passport = require('passport')
 const {sequelize} = require('./models')
 const config = require('./config/config')
+const helmet = require('helmet')
 const path = require('path')
 
 require('./passport')
 
 const app = express()
+app.use(helmet())
 app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())

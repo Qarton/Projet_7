@@ -5,7 +5,9 @@ module.exports = {
   // Affichage de tout les Memes
   async index(req, res) {
     try {
-      const meme = await Meme.findAll()
+      const meme = await Meme.findAll({
+        order: [['createdAt', 'DESC']]
+      })
       res.send(meme)
     } catch (err) {
       res.status(400).send({
