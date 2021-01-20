@@ -66,8 +66,10 @@ module.exports = {
       if (req.file != undefined) {
         imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
         const meme = await Meme.findByPk(req.params.memeId)
-        const filename = meme.imageUrl.split('/images/')[1]
-        fs.unlink(`images/${filename}`,()=>{console.log('suppr+modif')})
+        if (meme.imageUrl != null) {
+          const filename = meme.imageUrl.split('/images/')[1]
+          fs.unlink(`images/${filename}`,()=>{})
+        }
       }
       else {
         imageUrl == null
@@ -96,8 +98,10 @@ module.exports = {
     try {
       const {memeId} = req.params
       const meme = await Meme.findByPk(memeId)
-      const filename = meme.imageUrl.split('/images/')[1]
+      if (meme.imageUrl != null) {
+        const filename = meme.imageUrl.split('/images/')[1]
         fs.unlink(`images/${filename}`,()=>{})
+      }
       await meme.destroy()
       res.send(meme)
     } catch (err) {

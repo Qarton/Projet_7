@@ -2,7 +2,7 @@
 <!-- panneau d'enregistrement d'un utilisateur -->
       <v-row justify="center">
         <v-col md="4" sm="8">
-          <panel title="Register">
+          <panel title="Inscription">
             <v-text-field
               v-model="name"
               label="Nom"
@@ -22,10 +22,10 @@
               v-model="password"
               @keyup.enter="register"
               type="password"
-              label="Password"
+              label="Mot de passe"
             ></v-text-field>
             <v-alert dense type="error" v-if="error" v-html="error" />
-            <v-btn @click="register" class="black" dark>Register</v-btn>
+            <v-btn @click="register" class="black" dark>Enregistrer</v-btn>
           </panel>
         </v-col>
       </v-row>

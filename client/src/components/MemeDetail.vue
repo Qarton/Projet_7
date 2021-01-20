@@ -1,8 +1,34 @@
 <template>
 <!-- Détail d'un Meme -->
 <div v-if="this.meme!=null">
-  <v-btn v-if="isUserLoggedIn &&  user.id===meme.UserId" @click="navigateTo({name: 'meme-edit', params: {memeId: meme.id}})" class="black" dark>Edit</v-btn>
-  <v-btn v-if="isUserLoggedIn &&  user.id===meme.UserId" @click="deleteMeme(meme.id)" class="black" dark>Delete</v-btn>
+  <v-btn
+  v-if="isUserLoggedIn &&  user.id===meme.UserId"
+  @click="navigateTo({name: 'meme-edit', params: {memeId: meme.id}})"
+  dark>
+  <v-icon left>
+    mdi-pencil
+  </v-icon>
+  Modification
+  </v-btn>
+  <v-btn
+  v-if="isUserLoggedIn && user.id===meme.UserId"
+  @click="deleteMeme(meme.id)"
+  dark>
+  <v-icon left>
+    mdi-delete
+  </v-icon>
+  Supprimer
+  </v-btn>
+  <v-btn
+  v-if="isUserLoggedIn && user.admin===true"
+  @click="deleteMeme(meme.id)"
+  color="error"
+  dark>
+  <v-icon left>
+    mdi-comment
+  </v-icon>
+  Supprimer (admin)
+  </v-btn>
   <v-row justify="center">
     <v-col lg ="4" md="6" sm="10">
       <p class="text-capitalize text-h5 font-weight-bold mb-0"> {{meme.title}} </p>
@@ -21,7 +47,7 @@
   <v-row class="mt-4" justify="center">
     <v-col md="6" sm="10">
       <v-textarea v-if="isUserLoggedIn" outlined label="Votre message" v-model="text"></v-textarea>
-      <v-btn v-if="isUserLoggedIn" @click="addComment" class="black" dark>Comment</v-btn>
+      <v-btn v-if="isUserLoggedIn" @click="addComment" color="black" dark>Commenter</v-btn>
       <div v-for="comment in meme.Comments" :key="comment.id" class="py-4 px-2">
         <v-card flat outlined>
           <v-card-title>
@@ -30,8 +56,24 @@
           </v-card-title>
         <v-card-text class="text-h6 black--text">{{comment.text}}</v-card-text>
         </v-card>
-        <v-btn v-if="isUserLoggedIn &&  user.id===comment.UserId" @click="deleteComment(comment.id)" class="black" dark>Delete</v-btn>
-        <v-btn v-if="isUserLoggedIn && user.admin===true" @click="deleteComment(comment.id)" class="black" dark>Admin Delete</v-btn>
+        <v-btn
+        v-if="isUserLoggedIn && user.id===comment.UserId"
+        @click="deleteComment(comment.id)"
+        dark>
+        <v-icon left>
+          mdi-delete
+        </v-icon>
+        Supprimer
+        </v-btn>
+        <v-btn
+        v-if="isUserLoggedIn && user.admin===true"
+        @click="deleteComment(comment.id)"
+        color="error">
+        <v-icon left>
+          mdi-delete
+        </v-icon>
+        Supprimer (admin)
+        </v-btn>
       </div>
     </v-col>
   </v-row>
@@ -66,6 +108,19 @@ export default {
     this.meme = ((await MemeService.show(memeId))).data
   },
   methods: {
+    async addComment () {
+      try {
+        this.comment = (await CommentService.post({
+          memeId: this.meme.id,
+          userId: this.user.id,
+          text: this.text
+        })).data
+        this.meme = ((await MemeService.show(this.meme.id))).data
+        this.text = ''
+      } catch (err) {
+        console.log(err)
+      }
+    },
     async deleteComment (commentId) {
       try {
         this.meme.Comments.filter((obj) => { return obj.id !== commentId })
@@ -81,19 +136,6 @@ export default {
         this.$router.push({
           name: 'meme'
         })
-      } catch (err) {
-        console.log(err)
-      }
-    },
-    async addComment () {
-      try {
-        this.comment = (await CommentService.post({
-          memeId: this.meme.id,
-          userId: this.user.id,
-          text: this.text
-        })).data
-        this.meme = ((await MemeService.show(this.meme.id))).data
-        this.text = ''
       } catch (err) {
         console.log(err)
       }

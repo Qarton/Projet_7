@@ -2,7 +2,7 @@
 <!-- panneau de Login -->
   <v-row justify="center">
     <v-col md="4" sm="8">
-      <panel title="Login">
+      <panel title="Connexion">
         <v-text-field
         v-model="email"
         label="Email"
@@ -15,7 +15,7 @@
         @keyup.enter="login"
         ></v-text-field>
         <v-alert dense type="error" v-if="error" v-html="error" />
-        <v-btn @click="login" class="black" dark>Login</v-btn>
+        <v-btn @click="login" class="black" dark>Connexion</v-btn>
       </panel>
     </v-col>
   </v-row>

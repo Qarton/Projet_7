@@ -2,17 +2,17 @@
 <v-row justify="center">
   <v-col md="4" sm="8">
     <!-- panneau de création d'un Meme -->
-    <panel title="Create Meme">
-      <v-text-field required :rules="[required]" v-model="meme.title" label="Title"></v-text-field>
+    <panel title="Créer votre Meme">
+      <v-text-field prepend-icon="mdi-pen" required :rules="[required]" v-model="meme.title" label="Saisir un titre"></v-text-field>
       <v-file-input
-        label="Ajouter une photo"
+        label="Ajouter une image"
         filled
         prepend-icon="mdi-camera"
         type="file"
         @change="selectFile"
       ></v-file-input>
-          <v-alert dense type="error" v-if="error" v-html="error" />
-      <v-btn @click="create" class="black mt-5" dark>Create</v-btn>
+      <v-alert dense type="error" v-if="error" v-html="error" />
+      <v-btn @click="create" class="black mt-5" dark>Créer</v-btn>
     </panel>
   </v-col>
 </v-row>

@@ -1,15 +1,30 @@
 <template>
 <div>
   <!-- Affichage de L'activité d'un utilisateur -->
-  <v-btn v-if="isUserLoggedIn && userIdActivity===userId" @click="deleteUser(userId)" class="black" dark>Delete</v-btn>
+  <v-btn
+  v-if="isUserLoggedIn && userId===user.id"
+  @click="deleteUser(userId)"
+  color="error"
+  dark>
+  <v-icon left>
+    mdi-alert
+  </v-icon>
+  Supprimer votre compte
+  </v-btn>
   <v-row justify="center">
-    <v-col md="8">
+    <v-col
+    v-if="isUserLoggedIn && userId===user.id"
+    md="8">
+      <h1>Votre Historique</h1>
+    </v-col>
+    <v-col v-else md="8">
       <h1>Historique de {{search.firstName}} {{search.name}}</h1>
     </v-col>
   </v-row>
   <v-row justify="center">
     <v-col md="8">
-      <h2>Meme</h2>
+      <h2 v-if="isUserLoggedIn && userId===user.id">Vos Memes :</h2>
+      <h2 v-else>Memes Postés :</h2>
       <!-- Affichage des Meme -->
     <v-expansion-panels>
     <v-expansion-panel
@@ -31,7 +46,8 @@
   </v-row>
   <v-row justify="center">
     <v-col md="8">
-      <h2>Commentaire</h2>
+      <h2 v-if="isUserLoggedIn && userId===user.id">Vos commentaires :</h2>
+      <h2 v-else>Commentaires postés :</h2>
       <!-- Affichage de L'activité des commentaires -->
           <v-expansion-panels>
     <v-expansion-panel v-for="comment in search.Comments" :key="'C'+comment.id">
@@ -64,17 +80,12 @@ export default {
     return {
       moment: moment,
       userId: null,
-      userIdActivity: null,
       search: {}
     }
   },
   async mounted () {
-    this.userIdActivity = await this.$store.state.route.params.userId
-    this.search = (await AuthenticationService.index(this.userIdActivity)).data
-    if (!this.isUserLoggedIn) {
-      return
-    }
-    this.userId = await this.user.id
+    this.userId = await this.$store.state.route.params.userId
+    this.search = (await AuthenticationService.index(this.userId)).data
   },
   methods: {
     navigateTo (route) {
@@ -82,7 +93,6 @@ export default {
     },
     async deleteUser (userId) {
       try {
-        const userId = this.userId
         await AuthenticationService.delete(userId)
         this.$store.dispatch('setToken', null)
         this.$store.dispatch('setUser', null)
