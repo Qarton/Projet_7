@@ -44,15 +44,13 @@ export default {
       this.error = null
       const fd = new FormData()
       const memeId = this.meme.id
+      if (!this.meme.title) {
+        this.error = 'Veuillez saisir un titre.'
+        return
+      }
       fd.append('imageUrl', this.meme.imageUrl)
       fd.append('title', this.meme.title)
       fd.append('memeId', memeId)
-      console.log(fd.get('imageUrl'))
-      // const testFields = await Object.keys(this.meme).every(key => !!this.meme[key])
-      // if (!testFields) {
-      //   this.error = 'Please fill all the required fields.'
-      //   return
-      // }
       try {
         await MemeService.put(fd)
         this.$router.push({

@@ -7,13 +7,15 @@ module.exports =  {
             password: Joi.string().regex(
                 new RegExp('^[a-zA-Z0-9]{3,16}$')
             ),
-            name: Joi.string()
-            .alphanum()
+            name: Joi.string().regex(
+              new RegExp("^[-'0-9a-zÀ-ÿ]{3,16}$")
+          )
             .min(3)
             .max(30)
             .required(),
-            firstName: Joi.string()
-            .alphanum()
+            firstName: Joi.string().regex(
+              new RegExp("^[-'0-9a-zÀ-ÿ]{3,16}$")
+          )
             .min(3)
             .max(30)
             .required(),

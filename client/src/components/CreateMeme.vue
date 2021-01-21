@@ -44,11 +44,11 @@ export default {
       const fd = new FormData()
       fd.append('imageUrl', this.meme.imageUrl)
       fd.append('title', this.meme.title)
-      // const testFields = await Object.keys(this.meme).every(key => !!this.meme[key])
-      // if (!testFields) {
-      //   this.error = 'Please fill all the required fields.'
-      //   return
-      // }
+      const testFields = await Object.keys(this.meme).every(key => !!this.meme[key])
+      if (!testFields) {
+        this.error = 'Veuillez remplir tous les champs obligatoires.'
+        return
+      }
       try {
         await MemeService.post(fd)
         this.$router.push({
