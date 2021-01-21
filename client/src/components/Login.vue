@@ -1,7 +1,7 @@
 <template>
 <!-- panneau de Login -->
   <v-row justify="center">
-    <v-col md="4" sm="8">
+    <v-col lg="4" md="6" sm="8">
       <panel title="Connexion">
         <v-text-field
         v-model="email"

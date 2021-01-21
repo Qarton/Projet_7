@@ -1,6 +1,6 @@
 <template>
 <v-row justify="center">
-  <v-col md="4" sm="8">
+  <v-col lg="4" md="6" sm="8">
     <!-- panneau de Modification d'un Meme -->
     <panel title="Modifier votre Meme">
       <v-text-field prepend-icon="mdi-pen" required :rules="[required]" v-model="meme.title" label="Titre"></v-text-field>
