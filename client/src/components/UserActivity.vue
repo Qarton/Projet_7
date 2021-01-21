@@ -1,16 +1,47 @@
 <template>
 <div>
   <!-- Affichage de L'activité d'un utilisateur -->
-  <v-btn
-  v-if="isUserLoggedIn && userId===user.id"
-  @click="deleteUser(userId)"
-  color="error"
-  dark>
-  <v-icon left>
-    mdi-alert
-  </v-icon>
-  Supprimer votre compte
-  </v-btn>
+    <v-row v-if="isUserLoggedIn && userId===user.id">
+    <v-dialog
+      v-model="dialog"
+      persistent
+      max-width="350"
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="error"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+          Supprimer votre compte
+        </v-btn>
+      </template>
+      <v-card>
+        <v-card-title class="headline">
+          Suppression du compte
+        </v-card-title>
+        <v-card-text>Attention vous allez supprimer votre compte et tout le contenu qui lui est lié.</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="error"
+            text
+            @click="dialog = false"
+          >
+            Non
+          </v-btn>
+          <v-btn
+            color="error"
+            text
+            @click="deleteUser(userId)"
+          >
+            Oui
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-row>
   <v-row justify="center">
     <v-col
     v-if="isUserLoggedIn && userId===user.id"
@@ -30,8 +61,10 @@
     <v-expansion-panel
       v-for="meme in search.Memes"
       :key="'M'+meme.id">
-      <v-expansion-panel-header>
+      <v-expansion-panel-header class="title">
+        <h3>
         {{meme.title}}
+        </h3>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
         <v-row justify="center">
@@ -51,12 +84,14 @@
       <!-- Affichage de L'activité des commentaires -->
           <v-expansion-panels>
     <v-expansion-panel v-for="comment in search.Comments" :key="'C'+comment.id">
-      <v-expansion-panel-header>
-        {{comment.owner}} le {{ moment(comment.createdAt).format("DD/MM/YYYY") }} à {{ moment(comment.createdAt).format("hh:mm") }}
+      <v-expansion-panel-header class="subtitle">
+        <h3>
+        Commentaire du {{ moment(comment.createdAt).format("DD/MM/YYYY") }} à {{ moment(comment.createdAt).format("HH:mm") }}
+        </h3>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
-          <p class="text-h6 black--text">{{comment.text}}</p>
-          <v-btn @click="navigateTo({name: 'meme-detail', params: {memeId: comment.MemeId}})" class="black" dark>Go to Meme</v-btn>
+          <p rounded-pill class="text-h6 black--text">{{comment.text}}</p>
+          <v-btn @click="navigateTo({name: 'meme-detail', params: {memeId: comment.MemeId}})" class="black" dark>Accéder au Meme</v-btn>
       </v-expansion-panel-content>
     </v-expansion-panel>
   </v-expansion-panels>
@@ -80,7 +115,8 @@ export default {
     return {
       moment: moment,
       userId: null,
-      search: {}
+      search: {},
+      dialog: false
     }
   },
   async mounted () {

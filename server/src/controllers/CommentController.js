@@ -15,7 +15,7 @@ module.exports = {
         MemeId: memeId,
         UserId: userId,
         text: text,
-        owner: owner
+        owner: req.user.firstName + ' ' + req.user.name
       })
       res.send(newComment)
     } catch (err) {

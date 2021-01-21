@@ -4,9 +4,9 @@ const config = require('../config/config')
 const bcrypt = require('bcrypt')
 
 function jwtSignUser (user) {
-    const ONE_HOUR = 60 * 60
+    const ONE_WEEK = 60 * 60 * 24 * 7
     return jwt.sign(user, config.authentication.jwtSecret, {
-        expiresIn : ONE_HOUR
+        expiresIn : ONE_WEEK
     })
 }
 
@@ -81,7 +81,7 @@ module.exports = {
             id: userId
           },
           attributes: ['name','firstName'],
-          include:  [{model: Comment},{model: Meme}]
+          include:  [{model: Comment},{model: Meme, order: [['createdAt', 'DESC']]}]
         })
         res.send(userEmail)
       } catch (err) {

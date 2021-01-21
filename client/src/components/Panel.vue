@@ -3,7 +3,9 @@
   <div>
     <v-toolbar fixed class="black" dark>
       <v-toolbar-title class="mr-4">
+        <h1>
         {{ title }}
+        </h1>
       </v-toolbar-title>
     </v-toolbar>
     <div class="py-4 px-2">
@@ -19,4 +21,7 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  font-size: 25px;
+}
 </style>

@@ -4,6 +4,7 @@
   <v-btn
   v-if="isUserLoggedIn &&  user.id===meme.UserId"
   @click="navigateTo({name: 'meme-edit', params: {memeId: meme.id}})"
+  color="black"
   dark>
   <v-icon left>
     mdi-pencil
@@ -13,6 +14,7 @@
   <v-btn
   v-if="isUserLoggedIn && user.id===meme.UserId"
   @click="deleteMeme(meme.id)"
+  color="black"
   dark>
   <v-icon left>
     mdi-delete
@@ -31,7 +33,7 @@
   </v-btn>
   <v-row justify="center">
     <v-col lg ="4" md="6" sm="10">
-      <p class="text-capitalize text-h5 font-weight-bold mb-0"> {{meme.title}} </p>
+      <h1 class="text-cah1italize text-h5 font-weight-bold mb-0"> {{meme.title}} </h1>
       <v-img class="mx-2 my-2" :src='meme.imageUrl' alt="MEME" />
     </v-col>
   </v-row>
@@ -39,7 +41,7 @@
     <v-col md="8" class="d-flex align-center ml-4">
       <strong>Créateur :</strong>
       <pseudo :Utilisateur="meme" />
-        Crée le {{ moment(meme.createdAt).format("DD/MM/YYYY") }} à {{ moment(meme.createdAt).format("hh:mm") }}
+        Crée le {{ moment(meme.createdAt).format("DD/MM/YYYY") }} à {{ moment(meme.createdAt).format("HH:mm") }}
     </v-col>
   </v-row>
   <v-divider></v-divider>
@@ -52,7 +54,7 @@
         <v-card flat outlined>
           <v-card-title>
             <pseudo :Utilisateur="comment" />
-            le {{ moment(comment.createdAt).format("DD/MM/YYYY") }} à {{ moment(comment.createdAt).format("hh:mm") }}
+            le {{ moment(comment.createdAt).format("DD/MM/YYYY") }} à {{ moment(comment.createdAt).format("HH:mm") }}
           </v-card-title>
         <v-card-text class="text-h6 black--text">{{comment.text}}</v-card-text>
         </v-card>
