@@ -60,7 +60,6 @@ export default {
     },
     selectFile (file) {
       this.meme.imageUrl = file
-      console.log(file)
     }
   },
   components: {

@@ -59,7 +59,6 @@ module.exports = {
                 })
               }
             const userJson = user.toJSON()
-            console.log(jwtSignUser(userJson))
             res.send({
                user : userJson,
                token: jwtSignUser(userJson),

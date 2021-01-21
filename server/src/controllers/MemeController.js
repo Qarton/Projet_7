@@ -34,7 +34,6 @@ module.exports = {
       let title = req.body.title
       let owner = req.user.firstName + ' ' + req.user.name
       let UserId = req.user.id
-      console.log(req.body)
       if (req.file != undefined) {
         imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
       }

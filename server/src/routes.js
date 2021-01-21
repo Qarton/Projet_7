@@ -15,6 +15,7 @@ module.exports = (app) => {
     app.get('/user/:userId',
     AuthenticationController.index)
     app.delete('/user/:userId',
+    isAuthenticated,
     AuthenticationController.delete)
 
     app.get('/meme',
@@ -22,6 +23,7 @@ module.exports = (app) => {
     app.get('/meme/:memeId',
     MemeController.show)
     app.put('/meme/:memeId',
+    isAuthenticated,
     multer,
     MemeController.put)
     app.post('/meme',
@@ -29,6 +31,7 @@ module.exports = (app) => {
     multer,
     MemeController.post)
     app.delete('/meme/:memeId',
+    isAuthenticated,
     MemeController.delete)
 
     app.post('/comments',
