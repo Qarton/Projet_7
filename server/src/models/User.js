@@ -14,8 +14,8 @@ module.exports = (sequelize, Datatypes) => {
         }
     })
     User.associate = function (models) {
-      User.hasMany(models.Comment)
-      User.hasMany(models.Meme)
+      User.hasMany(models.Comment, {foreignKey: { allowNull: false }})
+      User.hasMany(models.Meme, {foreignKey: { allowNull: false }})
     }
     return User
     }

@@ -7,7 +7,7 @@ module.exports = (sequelize, Datatypes) => {
     })
     Meme.associate = function (models) {
       Meme.belongsTo(models.User, { onDelete: 'CASCADE' })
-      Meme.hasMany(models.Comment)
+      Meme.hasMany(models.Comment, {foreignKey: { allowNull: false }})
     }
 
     return Meme
