@@ -1,4 +1,4 @@
-Installation:
+**Installation:**
 Cloner le repository
 dans le répertoire client : npm install
 dans le répertoire serveur : npm install et node seed/index.js
