@@ -24,7 +24,7 @@
               type="password"
               label="Mot de passe"
             ></v-text-field>
-            <v-alert dense type="error" v-if="error" v-html="error" />
+            <v-alert dense dark color="#2A3B4D" v-if="error" v-html="error" />
             <v-btn @click="register" class="black" dark>Enregistrer</v-btn>
           </panel>
         </v-col>

@@ -5,7 +5,7 @@ module.exports =  {
         const schema = Joi.object({
             email : Joi.string().email(),
             password: Joi.string().regex(
-                new RegExp('^[a-zA-Z0-9]{3,16}$')
+                new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})')
             ),
             name: Joi.string().regex(
               new RegExp("^[-'0-9a-zA-ZÀ-ÿ]{3,16}$")
@@ -30,7 +30,7 @@ module.exports =  {
                     break
                 case 'password' :
                     res.status(400).send({
-                        error : 'Invalid password'
+                        error : 'Votre mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et faire plus de 8 caractères'
                     })
                     break
                 case 'name' :

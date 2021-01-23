@@ -9,7 +9,7 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          color="error"
+          color="#2A3B4D"
           dark
           v-bind="attrs"
           v-on="on"
@@ -25,14 +25,14 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="error"
+            color="#2A3B4D"
             text
             @click="dialog = false"
           >
             Non
           </v-btn>
           <v-btn
-            color="error"
+            color="#2A3B4D"
             text
             @click="deleteUser(userId)"
           >

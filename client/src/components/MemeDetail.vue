@@ -24,7 +24,7 @@
   <v-btn
   v-if="isUserLoggedIn && user.admin===true"
   @click="deleteMeme(meme.id)"
-  color="error"
+  color="#2A3B4D"
   dark>
   <v-icon left>
     mdi-comment
@@ -70,7 +70,8 @@
         <v-btn
         v-if="isUserLoggedIn && user.admin===true"
         @click="deleteComment(comment.id)"
-        color="error">
+        color="#2A3B4D"
+        dark>
         <v-icon left>
           mdi-delete
         </v-icon>

@@ -14,7 +14,7 @@
         label="Password"
         @keyup.enter="login"
         ></v-text-field>
-        <v-alert dense type="error" v-if="error" v-html="error" />
+        <v-alert dense dark color="#2A3B4D" v-if="error" v-html="error" />
         <v-btn @click="login" class="black" dark>Connexion</v-btn>
       </panel>
     </v-col>

@@ -11,7 +11,7 @@
         type="file"
         @change="selectFile"
       ></v-file-input>
-      <v-alert dense type="error" v-if="error" v-html="error" />
+      <v-alert dense dark color="#2A3B4D" v-if="error" v-html="error" />
       <v-btn @click="edit" class="black" dark>Modifier</v-btn>
     </panel>
   </v-col>
