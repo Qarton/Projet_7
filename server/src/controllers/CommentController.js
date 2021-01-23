@@ -4,13 +4,7 @@ module.exports = {
   //Ajout d'un commentaire
   async post(req, res) {
     try {
-      const {memeId, userId, text, owner} = req.body
-      const comment = await Comment.findOne({
-        where: {
-          MemeId: memeId,
-          UserId: userId
-        }
-      })
+      const {memeId, userId, text} = req.body
       const newComment = await Comment.create({
         MemeId: memeId,
         UserId: userId,

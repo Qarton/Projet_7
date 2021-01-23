@@ -29,7 +29,6 @@ module.exports = {
   //Enregistrement d'un Meme
   async post(req, res) {
     try {
-      // const meme = await Meme.create(req.body)
       let imageUrl
       let title = req.body.title
       let owner = req.user.firstName + ' ' + req.user.name
@@ -52,7 +51,6 @@ module.exports = {
         await Meme.create(meme)
         res.send(meme)
       }
-      // res.send(meme)
     } catch (err) {
       res.status(400).send({
         error: 'Error creating Meme'

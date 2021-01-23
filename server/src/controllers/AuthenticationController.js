@@ -89,6 +89,7 @@ module.exports = {
         })
       }
     },
+    // Suppression du compte de l'utilisateur
     async delete(req, res) {
       try {
         const {userId} = req.params
