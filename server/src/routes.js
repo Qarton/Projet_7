@@ -13,8 +13,10 @@ module.exports = (app) => {
   app.post('/login',
   AuthenticationControllerPolicy.login,
   AuthenticationController.login)
-  app.get('/user/:userId',
+  app.get('/history/:userId',
   AuthenticationController.index)
+  app.get('/user/:userId',
+  AuthenticationController.pseudo)
   app.delete('/user/:userId',
   isAuthenticated,
   AuthenticationController.delete)
@@ -41,4 +43,6 @@ module.exports = (app) => {
   app.delete('/comments/:commentId',
   isAuthenticated,
   CommentController.delete)
+  app.get('/comments/:memeId',
+  CommentController.index)
 }

@@ -3,10 +3,8 @@ import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
-
-export default new Vuex.Store({
+const store = new Vuex.Store({
   strict: true,
-  plugins: [createPersistedState()],
   state: {
     token: null,
     user: null,
@@ -15,23 +13,24 @@ export default new Vuex.Store({
   mutations: {
     setToken (state, token) {
       state.token = token
-      if (token) {
-        state.isUserLoggedIn = true
-      } else {
-        state.isUserLoggedIn = false
-      }
+      state.isUserLoggedIn = !!(token)
     },
     setUser (state, user) {
       state.user = user
+    },
+    logout (state) {
+      state = {}
     }
   },
-  actions: {
-    setToken ({ commit }, token) {
-      commit('setToken', token)
-    },
-    setUser ({ commit }, user) {
-      commit('setUser', user)
-    }
-
-  }
+  // actions: {
+  //   setToken ({ commit }, token) {
+  //     commit('setToken', token)
+  //   },
+  //   setUser ({ commit }, user) {
+  //     commit('setUser', user)
+  //   }
+  // },
+  plugins: [createPersistedState()]
 })
+
+export default store

@@ -89,6 +89,23 @@ module.exports = {
         })
       }
     },
+    // Pseudo
+    async pseudo(req, res) {
+      try {
+        const userId = req.params.userId
+        const user = await User.findOne({
+          where: {
+            id: userId
+          },
+          attributes: ['name','firstName']
+        })
+        res.send(user)
+      } catch (err) {
+        res.status(400).send({
+          error: 'Error fetch Pseudo'
+        })
+      }
+    },
     // Suppression du compte de l'utilisateur
     async delete(req, res) {
       try {

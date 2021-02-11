@@ -57,8 +57,8 @@ export default {
           name: this.name,
           firstName: this.firstName
         })
-        this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUser', response.data.user)
+        this.$store.commit('setToken', response.data.token)
+        this.$store.commit('setUser', response.data.user)
         this.$router.push({
           name: 'meme'
         })

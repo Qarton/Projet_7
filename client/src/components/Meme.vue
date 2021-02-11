@@ -7,7 +7,14 @@
       <h2 class="text-capitalize text-h5 font-weight-bold" @click="navigateTo({name: 'meme-detail', params: {memeId: meme.id}})"> {{meme.title}} </h2>
         <v-img  class="mb-2" :src='meme.imageUrl' alt="MEME" @click="navigateTo({name: 'meme-detail', params: {memeId: meme.id}})" />
       <v-row align="center">
-        <pseudo :Utilisateur="meme" />
+      <div @click="navigateTo({name: 'history', params: {userId: meme.UserId}})">
+        <v-card class="d-flex align-center mr-1" flat>
+          <v-avatar rounded color="black" size="36">
+            <v-icon class="white--text headline">mdi-account</v-icon>
+          </v-avatar>
+          <strong class="ml-1">{{meme.User.firstName}} {{meme.User.name}}</strong>
+        </v-card>
+      </div>
         le {{ moment(meme.createdAt).format("DD/MM/YYYY") }} à {{ moment(meme.createdAt).format("HH:mm") }}
       </v-row>
     </div>
@@ -18,11 +25,7 @@
 <script>
 import moment from 'moment'
 import MemeService from '@/services/MemeService'
-import Pseudo from '@/components/Pseudo'
 export default {
-  components: {
-    Pseudo
-  },
   data () {
     return {
       memes: null,

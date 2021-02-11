@@ -36,7 +36,7 @@ export default {
     }
   },
   async mounted () {
-    const memeId = await this.$store.state.route.params.memeId
+    const memeId = await this.$route.params.memeId
     this.meme = ((await MemeService.show(memeId))).data
   },
   methods: {

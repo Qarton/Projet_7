@@ -6,7 +6,8 @@ module.exports = {
   async index(req, res) {
     try {
       const meme = await Meme.findAll({
-        order: [['createdAt', 'DESC']]
+        order: [['createdAt', 'DESC']],
+        include: {model: User, attributes: ['name','firstName']}
       })
       res.send(meme)
     } catch (err) {
@@ -18,7 +19,7 @@ module.exports = {
   // Affichage du détail d'un Meme et de ses commentaires
   async show(req, res) {
     try {
-      const meme = await Meme.findByPk(req.params.memeId,{include: Comment})
+      const meme = await Meme.findByPk(req.params.memeId, {include: [{model: User, attributes: ['name','firstName']},{model: Comment, include: {model: User, attributes: ['name','firstName']}}]})
       res.send(meme)
     } catch (err) {
       res.status(400).send({
@@ -93,6 +94,7 @@ module.exports = {
       })
     }
   },
+  //Modification d'un meme
   async delete(req, res) {
     try {
       const {memeId} = req.params

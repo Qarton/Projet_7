@@ -6,5 +6,8 @@ export default {
   },
   delete (commentId) {
     return Api().delete(`comments/${commentId}`)
+  },
+  index (memeId) {
+    return Api().get(`comments/${memeId}`)
   }
 }

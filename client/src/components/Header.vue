@@ -17,7 +17,7 @@
         <v-btn v-if="!isUserLoggedIn" class="primary rounded d-none d-md-block" text dark @click="navigateTo({name: 'register'})">
           Inscription
         </v-btn>
-        <v-btn v-if="isUserLoggedIn" class="d-none d-md-block" text dark @click="navigateTo({name: 'user', params: {userId: user.id}})">
+        <v-btn v-if="isUserLoggedIn" class="d-none d-md-block" text dark @click="navigateTo({name: 'history', params: {userId: user.id}})">
           Mon Historique
         </v-btn>
         <v-btn v-if="isUserLoggedIn" class="d-none d-md-block" text dark @click="logout">
@@ -46,7 +46,7 @@
             </v-list-item-icon>
             <v-list-item-title>Ajouter un Meme</v-list-item-title>
           </v-list-item>
-          <v-list-item v-if="isUserLoggedIn" @click="navigateTo({name: 'user', params: {userId: user.id}})">
+          <v-list-item v-if="isUserLoggedIn" @click="navigateTo({name: 'history', params: {userId: user.id}})">
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
@@ -95,8 +95,9 @@ export default {
       this.$router.push(route)
     },
     logout () {
-      this.$store.dispatch('setToken', null)
-      this.$store.dispatch('setUser', null)
+      this.$store.commit('setToken', null)
+      this.$store.commit('setUser', null)
+      this.$store.commit('logout')
       this.$router.push({
         name: 'login'
       })

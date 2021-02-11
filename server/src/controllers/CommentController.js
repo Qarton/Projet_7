@@ -1,4 +1,4 @@
-const { Comment,Meme } = require('../models')
+const { Comment, User } = require('../models')
 
 module.exports = {
   //Ajout d'un commentaire
@@ -30,5 +30,22 @@ module.exports = {
         error: 'Error deleting comment'
       })
     }
-  }
+  },
+  //Affichage des commentaires
+  async index(req, res) {
+    try {
+      const memeId = req.params.memeId
+      const comment = await Comment.findAll({
+        where: {
+          MemeId: memeId
+        },
+        include: {model: User, attributes: ['name','firstName']}
+      })
+      res.send(comment)
+    } catch (err) {
+      res.status(400).send({
+        error: 'Error fetch comment'
+      })
+    }
+  },
 }

@@ -8,6 +8,9 @@ export default {
     return Api().post('login', credentials)
   },
   index (userId) {
+    return Api().get(`history/${userId}`)
+  },
+  pseudo (userId) {
     return Api().get(`user/${userId}`)
   },
   delete (userId) {

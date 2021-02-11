@@ -120,7 +120,7 @@ export default {
     }
   },
   async mounted () {
-    this.userId = await this.$store.state.route.params.userId
+    this.userId = await this.$route.params.userId
     this.search = (await AuthenticationService.index(this.userId)).data
   },
   methods: {
@@ -130,8 +130,8 @@ export default {
     async deleteUser (userId) {
       try {
         await AuthenticationService.delete(userId)
-        this.$store.dispatch('setToken', null)
-        this.$store.dispatch('setUser', null)
+        this.$store.commit('setToken', null)
+        this.$store.commit('setUser', null)
         this.$router.push({
           name: 'meme'
         })

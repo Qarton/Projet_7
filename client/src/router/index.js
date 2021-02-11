@@ -12,8 +12,8 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/user/:userId',
-    name: 'user',
+    path: '/history/:userId',
+    name: 'history',
     component: UserActivity
   },
   {
