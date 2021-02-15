@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import UserActivity from '../components/UserActivity.vue'
 import Register from '../components/Register.vue'
 import Login from '../components/Login.vue'
-import Meme from '../components/Meme.vue'
+import MemeHome from '../components/MemeHome.vue'
 import CreateMeme from '../components/CreateMeme.vue'
 import MemeDetail from '../components/MemeDetail.vue'
 import MemeEdit from '../components/MemeEdit.vue'
@@ -29,7 +29,7 @@ const routes = [
   {
     path: '/meme',
     name: 'meme',
-    component: Meme
+    component: MemeHome
   },
   {
     path: '/meme/create',

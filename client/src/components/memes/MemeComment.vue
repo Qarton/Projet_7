@@ -7,15 +7,7 @@
       <div v-for="comment in comments" :key="comment.id" class="py-4 px-2">
         <v-card flat outlined>
           <v-card-title>
-            <div @click="navigateTo({name: 'history', params: {userId: comment.UserId}})">
-              <v-card class="d-flex align-center mr-1" flat>
-                <v-avatar rounded color="black" size="36">
-                  <v-icon class="white--text headline">mdi-account</v-icon>
-                </v-avatar>
-                <strong class="ml-1">{{comment.User.firstName}} {{comment.User.name}}</strong>
-              </v-card>
-            </div>
-            le {{ moment(comment.createdAt).format("DD/MM/YYYY") }} à {{ moment(comment.createdAt).format("HH:mm") }}
+            <pseudo :data="comment" />
           </v-card-title>
         <v-card-text class="text-h6 black--text">{{comment.text}}</v-card-text>
         </v-card>
@@ -44,11 +36,14 @@
 </template>
 
 <script>
-import moment from 'moment'
+import Pseudo from '@/components/Pseudo'
 import CommentService from '@/services/CommentService'
 import { mapState } from 'vuex'
 export default {
-
+  components: {
+    Pseudo
+  },
+  props: ['memeData'],
   computed: {
     ...mapState([
       'isUserLoggedIn',
@@ -58,12 +53,11 @@ export default {
   data () {
     return {
       comments: null,
-      text: '',
-      moment: moment
+      text: ''
     }
   },
   async mounted () {
-    const memeId = await this.$route.params.memeId
+    const memeId = await this.memeData.id
     this.comments = ((await CommentService.index(memeId))).data
   },
   methods: {

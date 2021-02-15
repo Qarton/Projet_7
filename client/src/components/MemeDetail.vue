@@ -33,33 +33,18 @@
   </v-btn>
   <v-row justify="center">
     <v-col lg ="4" md="6" sm="10">
-      <h1 class="text-cah1italize text-h5 font-weight-bold mb-0"> {{meme.title}} </h1>
-      <v-img class="mx-2 my-2" :src='meme.imageUrl' alt="MEME" />
-    </v-col>
-  </v-row>
-  <v-row justify="center" class="align-center">
-    <v-col md="8" class="d-flex align-center ml-4">
-      <strong>Créateur :</strong>
-      <div @click="navigateTo({name: 'history', params: {userId: meme.UserId}})">
-        <v-card class="d-flex align-center mr-1" flat>
-          <v-avatar rounded color="black" size="36">
-            <v-icon class="white--text headline">mdi-account</v-icon>
-          </v-avatar>
-          <strong class="ml-1">{{meme.User.firstName}} {{meme.User.name}}</strong>
-        </v-card>
-      </div>
-        Crée le {{ moment(meme.createdAt).format("DD/MM/YYYY") }} à {{ moment(meme.createdAt).format("HH:mm") }}
+      <meme :memeData="meme" />
     </v-col>
   </v-row>
   <v-divider></v-divider>
-  <meme-comment />
+  <meme-comment :memeData="meme" />
 </div>
 </template>
 
 <script>
-import moment from 'moment'
 import MemeService from '@/services/MemeService'
-import MemeComment from '@/components/MemeComment'
+import MemeComment from '@/components/memes/MemeComment'
+import Meme from '@/components/memes/Meme'
 import { mapState } from 'vuex'
 export default {
   computed: {
@@ -69,13 +54,12 @@ export default {
     ])
   },
   components: {
-    MemeComment
+    MemeComment,
+    Meme
   },
   data () {
     return {
-      meme: null,
-      text: '',
-      moment: moment
+      meme: null
     }
   },
   async mounted () {
